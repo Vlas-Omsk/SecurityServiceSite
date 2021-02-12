@@ -1,11 +1,12 @@
  // Модальное окно
 
 // открыть по кнопке
-$('.js-button-anal').click(function() { 
+console.log($('.js-button-anal').click(function() { 
     
     $('.js-overlay-anal').fadeIn();
     $('.js-overlay-anal').addClass('disabled');
-});
+    console.log("$('.js-button-anal').click");
+}));
 
 // закрыть на крестик
 $('.js-close-anal').click(function() { 
@@ -21,16 +22,6 @@ $(document).mouseup(function (e) {
         
     }
 });
-
-
-
-
-
-
-
-
-
-
 
 
     // Модальное окно
