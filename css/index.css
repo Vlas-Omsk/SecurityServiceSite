@@ -87,6 +87,7 @@ header ul li a {
     text-decoration: none;
     color: white;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
 header ul li a::after {
