@@ -211,3 +211,57 @@ header ul li a:hover::after {
     list-style-type: none;
 }
 /*#endregion*/
+
+/*#region preloader*/
+#plug {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition: opacity .5s;
+}
+
+#logo-box {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top: calc(50vh - 25vh);
+    transition: top .5s;
+}
+
+#logo-box #helmet {
+    box-sizing: border-box;
+    filter: invert(1);
+    padding: 20px;
+    height: 50vh;
+    opacity: 0;
+    transition: height .5s;
+}
+
+#logo-box #circle {
+    position: absolute;
+    height: 0;
+    width: 0;
+    border-radius: 100%;
+    background-color: white;
+    transition: transform 1.5s, border-radius .5s, height .5s, width .5s;
+}
+
+#logo-box #label {
+    display: flex;
+    overflow: visible hidden;
+    transition: opacity .2s;
+}
+
+#logo-box #label a.label-char {
+    position: relative;
+    color: white;
+    font-weight: 700;
+    font-size: 48px;
+    transform: translateY(100%);
+    transition: transform .4s cubic-bezier(.19,1,.22,1);
+}
+/*#endregion*/
