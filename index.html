@@ -11,14 +11,74 @@
         <link rel="icon" href="media/favicon.png" type="image-x/png"/>
 
         <link href="css/index.css" rel="stylesheet"/>
+        <link href="css/slider.css" rel="stylesheet"/>
         
         <script src="js/jquery.min.js"></script>
         <script src="js/inject-static-elements.js"></script>
         <script src="js/popups.js"></script>
+        <script src="js/slider.js"></script>
+
+        <style>
+            header {
+                height: 85vh;
+            }
+
+            h1.title {
+                text-align: center;
+                font-style: italic;
+                font-weight: 700;
+                font-size: 4em;
+            }
+        </style>
     </head>
-    <body>
+    <body inject-static-elements="popups" debug="false">
+        <!--#region header-->
+        <header>
+            <div class="slider" auto-slide="3000">
+                <div slide="Система видеонаблюдения" style="background-image: url('media/index-slider/11-Sistema-videonablyudeniya-n.jpg');"></div>
+                <div slide="Контрольно-пропускной режим" style="background-image: url('media/index-slider/1-4-KPP-n.jpg');"></div>
+                <div slide="Контрольно-пропускной режим" style="background-image: url('media/index-slider/1-KPP-1-n.jpg');"></div>
+                <div slide="Внутриобъектовый режим" style="background-image: url('media/index-slider/6-1-VOR-n.jpg');"></div>
+                <div slide="Внутриобъектовый режим" style="background-image: url('media/index-slider/6-2-VOR-n.jpg');"></div>
+                <div slide="Внутриобъектовый режим" style="background-image: url('media/index-slider/6-3-VOR-n.jpg');"></div>
+                <div slide="Пульт централизованного наблюдения" style="background-image: url('media/index-slider/7-4-VIDEO-n.jpg');"></div>
+
+                <div class="title">
+                    <h1>Title - Test</h1>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    <a class="js-button" overlay-id="anal">Наши услуги</a>
+                </li>
+                <li>
+                    <a href="documents.html">Наши документы</a>
+                </li>
+                <li>
+                    <a href="price.html">Цены на услуги</a>
+                </li>
+                <li>
+                    <a href="feedback.html">Отзывы</a>
+                </li>
+                <li>
+                    <a href="job.html">Вакансия</a>
+                </li>
+                <li>
+                    <a class="js-button" overlay-id="campaign">Контакты</a>
+                </li>
+            </ul>
+        </header>
+        <div class="logo">
+            <div id="line"></div>
+        </div>
+        <!--#endregion-->
+
         <div>
-            
+            <h1 class="title">Наши услуги</h1>
+
+            <div>
+                <h1 class="title" style="font-style: normal; margin: 25vh 0;">Здесь будут модные плиточки</h1>
+            </div>
         </div>
     </body>
 </html>

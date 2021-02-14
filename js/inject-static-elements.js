@@ -1,4 +1,4 @@
-const addbegin = `
+const header = `
 <!--#region header-->
 <header>
     <ul>
@@ -27,7 +27,7 @@ const addbegin = `
 </div>
 <!--#endregion-->`;
 
-const addend = `
+const popups = `
 <!--#region popups-->
 <div class="overlay" overlay-id="campaign">
     <div class="popup">
@@ -65,10 +65,16 @@ const addend = `
 
 document.addEventListener("DOMContentLoaded", function () {
     var body = $(document.body);
-    body.prepend(addbegin);
-    body.append(addend);
+    
+    var elements = (body.attr("inject-static-elements") == undefined ? "header, popups" : body.attr("inject-static-elements")).split(',');
+    elements.forEach((elem) => {
+        switch (elem.trim()) {
+            case 'header': body.prepend(header); break;
+            case 'popups': body.append(popups); break;
+        }
+    });
 
-    if (!document.referrer.includes(document.URL)){
+    if (!document.referrer.includes(document.URL) && body.attr("debug") != "true"){
         $(`<div id="plug"></div>
         <div id="logo-box">
             <a id="helmet" href="index.html"><img style="height: 100%;" src="media/helmet.svg"/></a>
@@ -129,6 +135,7 @@ async function RunPreloaderAnimation() {
     await sleep(500);
 
     plug.style.pointerEvents = 'none';
+    document.body.style.overflow = 'auto';
     var line = document.getElementById('line');
     line.style.width = '100%';
     label.remove();
