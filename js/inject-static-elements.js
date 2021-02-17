@@ -6,16 +6,16 @@ const header = `
             <a class="js-button" overlay-id="anal">Наши услуги</a>
         </li>
         <li>
-            <a href="documents.html">Наши документы</a>
+            <a transition href="documents.html">Наши документы</a>
         </li>
         <li>
-            <a href="price.html">Цены на услуги</a>
+            <a transition href="price.html">Цены на услуги</a>
         </li>
         <li>
-            <a href="feedback.html">Отзывы</a>
+            <a transition href="feedback.html">Отзывы</a>
         </li>
         <li>
-            <a href="job.html">Вакансия</a>
+            <a transition href="job.html">Вакансия</a>
         </li>
         <li>
             <a class="js-button" overlay-id="campaign">Контакты</a>
@@ -50,12 +50,12 @@ const popups = `
         <h2>Наши услуги</h2>
         <hr/>
         <ul>
-            <li class="menu_li"><a href="" class="menu_a">Физическая охрана</a></li>
-            <li class="menu_li"><a href="" class="menu_a">Пультовая охрана</a></li>
-            <li class="menu_li"><a href="" class="menu_a">Система видеонаблюдения</a></li>
-            <li class="menu_li"><a href="" class="menu_a">Охрано-пожарной система</a></li>
-            <li class="menu_li"><a href="" class="menu_a">Инкассация</a></li>
-            <li class="menu_li"><a href="" class="menu_a">Полиграф детектор лжи</a></li>
+            <li class="menu_li"><a transition href="" class="menu_a">Физическая охрана</a></li>
+            <li class="menu_li"><a transition href="" class="menu_a">Пультовая охрана</a></li>
+            <li class="menu_li"><a transition href="" class="menu_a">Система видеонаблюдения</a></li>
+            <li class="menu_li"><a transition href="" class="menu_a">Охрано-пожарной система</a></li>
+            <li class="menu_li"><a transition href="" class="menu_a">Инкассация</a></li>
+            <li class="menu_li"><a transition href="" class="menu_a">Полиграф детектор лжи</a></li>
         </ul>
     
         <div class="close-popup"></div>
@@ -66,7 +66,7 @@ const popups = `
 document.addEventListener("DOMContentLoaded", function () {
     var body = $(document.body);
     
-    var elements = (body.attr("inject-static-elements") == undefined ? "header, popups" : body.attr("inject-static-elements")).split(',');
+    var elements = (body.attr("inject-static-elements") == undefined ? ["header", "popups"] : body.attr("inject-static-elements").split(','));
     elements.forEach((elem) => {
         switch (elem.trim()) {
             case 'header': body.prepend(header); break;
@@ -74,10 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    //#region Preloader
     if (!document.referrer.includes(document.URL) && body.attr("debug") != "true"){
         $(`<div id="plug"></div>
         <div id="logo-box">
-            <a id="helmet" href="index.html"><img style="height: 100%;" src="media/helmet.svg"/></a>
+            <a transition id="helmet" href="index.html"><img style="height: 100%;" src="media/helmet.svg"/></a>
             <div id="label"></div>
             <div id="circle"></div>
         </div>`).insertAfter("header");
@@ -85,13 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
         RunPreloaderAnimation();
     }
     else
-    {
         $(`<link href="css/preloader-static.css" rel="stylesheet"/>
         <div id="logo-box">
-            <a id="helmet" href="index.html"><img style="height: 100%;" src="media/helmet.svg"/></a>
+            <a transition id="helmet" href="index.html"><img style="height: 100%;" src="media/helmet.svg"/></a>
             <div id="circle"></div>
         </div>`).insertAfter("header");
-    }
+    //#endregion
 });
 
 async function RunPreloaderAnimation() {
@@ -132,16 +132,16 @@ async function RunPreloaderAnimation() {
     logo_box.style.top = '0';
     label.style.opacity = 0;
 
-    await sleep(500);
+    await sleep(900);
 
     plug.style.pointerEvents = 'none';
-    document.body.style.overflow = 'auto';
     var line = document.getElementById('line');
     line.style.width = '100%';
     label.remove();
 
     await sleep(250);
 
+    document.body.style.overflow = 'auto';
     plug.style.opacity = 0;
 }
 

@@ -15,7 +15,7 @@
         
         <script src="js/jquery.min.js"></script>
         <script src="js/inject-static-elements.js"></script>
-        <script src="js/popups.js"></script>
+        <script src="js/index.js"></script>
         <script src="js/slider.js"></script>
 
         <style>
@@ -52,16 +52,16 @@
                     <a class="js-button" overlay-id="anal">Наши услуги</a>
                 </li>
                 <li>
-                    <a href="documents.html">Наши документы</a>
+                    <a transition href="documents.html">Наши документы</a>
                 </li>
                 <li>
-                    <a href="price.html">Цены на услуги</a>
+                    <a transition href="price.html">Цены на услуги</a>
                 </li>
                 <li>
-                    <a href="feedback.html">Отзывы</a>
+                    <a transition href="feedback.html">Отзывы</a>
                 </li>
                 <li>
-                    <a href="job.html">Вакансия</a>
+                    <a transition href="job.html">Вакансия</a>
                 </li>
                 <li>
                     <a class="js-button" overlay-id="campaign">Контакты</a>
@@ -76,8 +76,25 @@
         <div>
             <h1 class="title">Наши услуги</h1>
 
-            <div>
-                <h1 class="title" style="font-style: normal; margin: 25vh 0;">Здесь будут модные плиточки</h1>
+            <ul class="grid">
+                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                    <img src="media/index-grid/1-42.jpg"/>
+                </li>
+                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                    <img src="media/index-grid/2-1-Pult.jpg"/>
+                </li>
+                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                    <img src="media/index-grid/3-4-Videonablyudenie.jpg"/>
+                </li>
+                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                    <img src="media/index-grid/4-1-Inkasatsiya.jpg"/>
+                </li>
+                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                    <img src="media/index-grid/5-2.jpg"/>
+                </li>
+                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                    <img src="media/index-grid/6-4-POS.jpg"/>
+                </li>
             </div>
         </div>
     </body>
