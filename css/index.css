@@ -271,7 +271,7 @@ header > ul li a:hover::after {
     display: inline-grid;
     list-style-type: none;
     grid-gap: 15px;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 10%;
     padding: 0 10vw;
     box-sizing: border-box;
