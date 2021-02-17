@@ -1,8 +1,4 @@
 /*#region logo-box*/
-body {
-    overflow: auto;
-}
-
 div.logo div#line {
     width: 100%;
     transition: none;

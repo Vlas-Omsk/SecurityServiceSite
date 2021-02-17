@@ -95,6 +95,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 async function RunPreloaderAnimation() {
+    $(document).on('scroll.PreloaderAnimation', function() {
+        window.scrollTo(0, 0);
+    });
+
     var logo_box = document.getElementById('logo-box');
     var plug = document.getElementById('plug');
     var circle = document.getElementById('circle');
@@ -141,8 +145,9 @@ async function RunPreloaderAnimation() {
 
     await sleep(250);
 
-    document.body.style.overflow = 'auto';
     plug.style.opacity = 0;
+
+    $(document).off('scroll.PreloaderAnimation');
 }
 
 function sleep(ms) {

@@ -47,7 +47,7 @@ function isOnVisibleSpace(element) {
 
 var listenedElements = [];
 document.addEventListener("DOMContentLoaded", () => {
-    document.onscroll = function() {
+    $(document).on('scroll', function() {
         listenedElements.forEach((item, index) => {
             if (item == null)
                 return;
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
         });
-    }
+    });
 });
 
 function onVisibleSpaceListener(dom_elements, inVisibleSpace, outVisibleSpace) {
