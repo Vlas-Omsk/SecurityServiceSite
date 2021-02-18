@@ -105,7 +105,6 @@ function el_VisibleChanged(el, attribute) {
                 Timeout = -1;
             } else
                 Timeout = el_Action(el, elem);
-            console.log(elem, Timeout);
         });
     }
 }

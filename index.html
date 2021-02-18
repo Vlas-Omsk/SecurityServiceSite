@@ -18,16 +18,12 @@
         <script src="js/index.js"></script>
         <script src="js/slider.js"></script>
 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+		<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
         <style>
             header {
                 height: 85vh;
-            }
-
-            h1.title {
-                text-align: center;
-                font-style: italic;
-                font-weight: 700;
-                font-size: 4em;
             }
         </style>
     </head>
@@ -43,9 +39,7 @@
                 <div slide="Внутриобъектовый режим" style="background-image: url('media/index-slider/6-3-VOR-n.jpg');"></div>
                 <div slide="Пульт централизованного наблюдения" style="background-image: url('media/index-slider/7-4-VIDEO-n.jpg');"></div>
 
-                <div class="title">
-                    <h1>Title - Test</h1>
-                </div>
+                <div class="title"><h1></h1></div>
             </div>
             <ul>
                 <li>
@@ -73,29 +67,120 @@
         </div>
         <!--#endregion-->
 
-        <div>
-            <h1 class="title">Наши услуги</h1>
+        <div class="content">
+            <h2>Наши <i>услуги</i></h2>
 
             <ul class="grid">
-                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                <li transition class="hidden" OnScrollVisible="~200; -hidden">
                     <img src="media/index-grid/1-42.jpg"/>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                <li transition class="hidden" OnScrollVisible="~200; -hidden">
                     <img src="media/index-grid/2-1-Pult.jpg"/>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                <li transition class="hidden" OnScrollVisible="~200; -hidden">
                     <img src="media/index-grid/3-4-Videonablyudenie.jpg"/>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                <li transition class="hidden" OnScrollVisible="~200; -hidden">
                     <img src="media/index-grid/4-1-Inkasatsiya.jpg"/>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                <li transition class="hidden" OnScrollVisible="~200; -hidden">
                     <img src="media/index-grid/5-2.jpg"/>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~100; -hidden">
+                <li transition class="hidden" OnScrollVisible="~200; -hidden">
                     <img src="media/index-grid/6-4-POS.jpg"/>
                 </li>
-            </div>
+            </ul>
+
+            <h2>Частное охранное предприятие <i>"Cпарта"</i></h2>
+
+            <p>Группа компаний Спарта на рынке охранных услуг более 10 лет, надежно и профессионально решает задачи в сфере обеспечения охраны и безопасности объектов. Учредители и руководящий состав компании состоит из сотрудников, имеющих в прошлом большой опыт работы в правоохранительных органах Сургута и ХМАО-Югры или проходившие службу в Вооруженных силах СССР и России, обладающие большим опытом работы по самым различным направлениям безопасности.</p>
+            <p>Государство осуществляет строгий надзор над всеми аспектами нашей трудовой деятельности, никаких вопросов ни у одного из контролирующих органов к нам никогда не возникало. Мы очень дорожим лицензией и не допускаем никаких противоправных действий, грозящих ее отзывом. Как и все профессионалы своего дела, мы имеем свои секреты мастерства, но все они в рамках закона и общепринятых этических норм.</p>
+
+            <h2>Наши <i>Документы</i></h2>
+
+            <ul class="gridline">
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/10.jpg"><img src="media/documents/10.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/2-1-1.jpg"><img src="media/documents/2-1-1.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/2-2-3.jpg"><img src="media/documents/2-2-3.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/2-2-4.jpg"><img src="media/documents/2-2-4.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/3-1-1.jpg"><img src="media/documents/3-1-1.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/3-3.jpg"><img src="media/documents/3-3.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/4-2.jpg"><img src="media/documents/4-2.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/5.jpg"><img src="media/documents/5.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/6.jpg"><img src="media/documents/6.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/7.jpg"><img src="media/documents/7.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/8.jpg"><img src="media/documents/8.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/9.jpg"><img src="media/documents/9.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/Sparta-18-1.jpg"><img src="media/documents/Sparta-18-1.jpg"/></a>
+                </li>
+                <li>
+                    <a data-fancybox="__documents" href="media/documents/Sparta-18-2.jpg"><img src="media/documents/Sparta-18-2.jpg"/></a>
+                </li>
+            </ul>
+
+            <h2>Наши <i>Клиенты</i></h2>
+
+            <h3>За время работы с нами заключили договора:</h3>
+
+            <ul class="enum">
+                <li>Филиалы Компании «Шлюмберже Лоджелко, Инк» в ХМАО, ЯНАО и республике Коми, Томская, Новосибирская, Волгоградская и Оренбургская области</li>
+                <li>Филиалы Компании «ПетроАльянс Сервис Компании Лимитед» в ХМАО, ЯНАО и республике Коми</li>
+                <li>АО «ЮТэйр-Вертолетные услуги»</li>
+                <li>АО «Автодорстрой»</li>
+                <li>ООО «Газпромнефть- центр»</li>
+                <li>ООО «Сервис центр ЭПУ»</li>
+                <li>АО «Компания МТА»</li>
+                <li>Сеть ювелирных магазинов «Золото 585»</li>
+                <li>Сеть магазинов ООО «Спортмастер»</li>
+                <li>Сеть магазинов ООО «Остин»</li>
+                <li>Аптечная сеть «Ригла»</li>
+            </ul>
+
+            <p>Практически от всех охраняемых объектов в адрес руководства и сотрудников компании поступили благодарственные письма за качество охранных услуг. За долгое время своей работы на рынке охранных услуг мы накопили большой опыт в обеспечении охраны объектов, осуществляя контрольно- пропускной и внутриобъектовые режимы.</p>
+
+            <h3>Под нашей охранной находятся:</h3>
+
+            <ul class="enum">
+                <li>производственные объекты нефтегазодобывающего комплекса</li>
+                <li>промышленные объекты и базы со сложным рельефом охраняемых территорий и большим количеством расположенных на указанных территориях зданий и сооружений</li>
+                <li>крупные офисные центры</li>
+                <li>муниципальные бюджетные общеобразовательные учреждения</li>
+                <li>административно-бытовые комплексы</li>
+            </ul>
+
+            <p>
+                География охраняемых объектов распространяется на все крупные города Ханты- Мансийского и Ямало- Ненецкого автономных округов.
+                Нами накоплен уникальный опыт оказания охранных услуг, уделяется особое внимание подбору и расстановке кадров, совершенствованию мастерства наших сотрудников, численность которых составляет более 180 человек. Наши сотрудники –это лицензированные специалисты, прошедшие специальную и психофизиологическую подготовку, способные в полной мере обеспечить безопасность объекта любой сложности и обеспечить сохранность имущества при перевозке. За время работы нами сформирован сложившийся, сплоченный коллектив, способный решать задачи по охране объектов любой сложности. Практически все сотрудники имеют большой опыт работы. 
+            </p>
+            <p>
+                Опытные специалисты нашей компании по Вашему желанию осуществляют установку, монтаж и постоянное обслуживание всего спектра охранных средств на заданном объекте. За долгое время своей работы на рынке охранных услуг мы накопили большой опыт в обеспечении охраны объектов собственности.
+                Грамотная организация охраны объекта и ответственность в работе, уважение к интересам Заказчика – это те качества, на которые Вы можете рассчитывать, сотрудничая с нами.
+            </p>
         </div>
     </body>
 </html>
