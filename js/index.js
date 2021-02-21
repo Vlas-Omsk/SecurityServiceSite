@@ -1,347 +1,8 @@
-//#region DOMContentLoaded
-var ua = window.navigator.userAgent;
-var DOMContentLoadedListeners = [];
+window.onload = function() {
+    document.body.style.opacity = 1;
 
-if (IsIE()) {
-    document.onreadystatechange = function () {
-        if (document.readyState == "interactive") {
-            DOMContentLoadedListeners.forEach(function(elem) { elem.call() });
-        }
-    }
-} else {
-    document.addEventListener("DOMContentLoaded", function() {
-        DOMContentLoadedListeners.forEach(function(elem) { elem.call() });
-    });
-}
-
-function OnDOMContentLoaded(callback) {
-    DOMContentLoadedListeners.push(callback);
-}
-//#endregion
-
-//#region DOM
-const header = [
-    { 'tag': '!--', 'content': '#region header' },
-    {
-        'tag': 'header',
-        'content': [
-            {
-                'tag': 'ul',
-                'attrs': {
-                    'id': 'menu'
-                },
-                'content': [
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Наши услуги', 'attrs': { 'transition': '', 'href': 'index.html#scrollto_services' } }
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Наши документы', 'attrs': { 'transition': '', 'href': 'index.html#scrollto_documents' } } 
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Цены на услуги', 'attrs': { 'transition': '', 'href': 'price.html' } } 
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Отзывы', 'attrs': { 'transition': '', 'href': 'feedback.html' } } 
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Вакансия', 'attrs': { 'transition': '', 'href': 'job.html' } } 
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Контакты', 'attrs': { 'class': 'js-button', 'overlay-id': 'campaign' } } 
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        'tag': 'div',
-        'attrs': { 'class': 'logo' },
-        'content': [
-            {
-                'tag': 'div',
-                'attrs': { 'id': 'line' }
-            }
-        ]
-    },
-    { 'tag': '!--', 'content': '#endregion' }
-];
-const popups = [
-    { 'tag': '!--', 'content': '#region popups' },
-    {
-        'tag': 'div',
-        'attrs': {
-            'class': 'overlay',
-            'overlay-id': 'campaign'
-        },
-        'content': [
-            {
-                'tag': 'div',
-                'attrs': {
-                    'class': 'popup'
-                },
-                'content': [
-                    {
-                        'tag': 'div',
-                        'content': [
-                            { 'tag': 'h2', 'content': 'Мы всегда на связи!' },
-                            {
-                                'tag': 'b',
-                                'attrs': {
-                                    'class': 'phone_call',
-                                    'data-call': 'more_anal',
-                                    'title': 'Нажми для вызова'
-                                },
-                                'content': '8 3462 58-25-40'
-                            },
-                            { 'tag': '#', 'content': ' - Многоканальный' }, { 'tag': 'br' },
-                            {
-                                'tag': 'b',
-                                'attrs': {
-                                    'class': 'phone_call',
-                                    'data-call': 'director_anal',
-                                    'title': 'Нажми для вызова'
-                                },
-                                'content': '8 982 567-68-70'
-                            },
-                            { 'tag': '#', 'content': ' – Генеральный директор' }, { 'tag': 'br' },
-                            { 'tag': '#', 'content': 'Почта: ' }, { 'tag': 'b', 'content': 'sparta3462@mail.ru' },
-                            { 'tag': 'hr' },
-                            { 'tag': 'h2', 'content': 'Как нас найти:' },
-                            { 'tag': 'p', 'content': '628400 Сургут ул. 30 лет Победы д. 66 оф.3.3' },
-                            { 
-                                'tag': 'div',
-                                'attrs': {
-                                    'id': 'map_gandonchir'
-                                },
-                                'content': [
-                                    { 
-                                        'tag': 'script',
-                                        'attrs': {
-                                            'type': 'text/javascript',
-                                            'charset': 'utf-8',
-                                            'async': '',
-                                            'src': 'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4c666137a789879324855a25fe39b7165bb84d5b038e753664468339a2d47cb0&amp;width=320&amp;height=240&amp;lang=ru_RU&amp;scroll=true'
-                                        }
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        'tag': 'div',
-                        'attrs': {
-                            'class': 'close-popup'
-                        }
-                    }
-                ]
-            }
-        ]
-    },
-    { 'tag': '!--', 'content': '#endregion' }
-];
-const preloader = [
-    {
-        'tag': 'div',
-        'attrs': {
-            'id': 'plug'
-        }
-    },
-    {
-        'tag': 'div',
-        'attrs': {
-            'id': 'logo-box'
-        },
-        'content': [
-            {
-                'tag': 'a',
-                'attrs': {
-                    'transition': '',
-                    'id': 'helmet',
-                    'href': 'index.html'
-                },
-                'content': [
-                    {
-                        'tag': 'img',
-                        'attrs': {
-                            'style': 'height: 100%;',
-                            'src': 'media/helmet.svg'
-                        }
-                    }
-                ]
-            },
-            {
-                'tag': 'div',
-                'attrs': {
-                    'id': 'label'
-                }
-            },
-            {
-                'tag': 'div',
-                'attrs': {
-                    'id': 'circle'
-                }
-            }
-        ]
-    }
-];
-
-OnDOMContentLoaded(function () {
-    const body = $(document.body);
-    if (IsIE())
-    {
-        body.append(JsonToDOM([
-            {
-                'tag': 'link',
-                'attrs': {
-                    'rel': 'stylesheet',
-                    'href': 'css\\ie-compatible.css'
-                }
-            }
-        ]));
-    }
-    
-    const elements = (isEmpty(body.attr("inject-static-elements")) ? ["header", "popups"] : body.attr("inject-static-elements").split(','));
-    elements.forEach(function(elem) {
-        switch (elem.trim()) {
-            case 'header': body.prepend(JsonToDOM(header)); break;
-            case 'popups': body.append(JsonToDOM(popups)); break;
-        }
-    });
-
-    InitPreloaderAnimation();
-});
-
-function InitPreloaderAnimation() {
-    const body = $(document.body);
-    
-    if (body.attr("debug") != "true")
-    if (!IsIE())
-    if (isEmpty(document.referrer) || isEmpty(URI().host) || document.referrer.indexOf(URI().host) == -1) {
-        $(JsonToDOM(preloader)).insertAfter("header");
-console.log("sdags");
-        RunPreloaderAnimation();
-        return;
-    }
-    
-
-    var preloader_copy = preloader;
-    preloader_copy[0] = {
-        'tag': 'link',
-        'attrs': {
-            'href': 'css/preloader-static.css',
-            'rel': 'stylesheet'
-        }
-    };
-    delete preloader_copy[1].content[1];
-    $(JsonToDOM(preloader)).insertAfter("header");
-}
-
-function RunPreloaderAnimation() {
-    $(document).on('scroll.PreloaderAnimation', function() {
-        window.scrollTo(0, 0);
-    });
-
-    var logo_box = $("#logo-box");
-    var plug = $("#plug");
-    var circle = $("#circle");
-    var helmet = $("#helmet");
-    var label = $("#label");
-
-    "ЧОП Спарта".split('').forEach(function(item, i) {
-        label.append('<a class="label-char" style="transition-delay: ' + ((i * 50) + 'ms') + '">' + (item == ' ' ? '&#160;' : item) + '</a>')
-    });
-
-    setTimeout(function() {
-        circle.addClass("rotate full");
-
-        setTimeout(function() {
-            helmet.css({ opacity: 1 });
-            circle.removeClass("full");
-
-            setTimeout(function() {
-                $(".label-char").css({ transform: 'none' });
-
-                setTimeout(function() {
-                    helmet.css({ height: '110px' });
-                    logo_box.css({ top: 0, transform: 'none' });
-                    label.css({ opacity: 0 });
-
-                    setTimeout(function() {
-                        plug.css({ 'pointer-events': 'none' });
-                        $("#line").css({ width: '100%' });
-                        label.remove();
-
-                        setTimeout(function() {
-                            plug.css({
-                                opacity: 0,
-                                'will-change': 'auto'
-                            });
-                            logo_box.css({ 'will-change': 'auto' });
-                            circle.css({ 'will-change': 'auto' });
-                            helmet.css({ 'will-change': 'auto' });
-
-                            $(document).off('scroll.PreloaderAnimation');
-                        }, 250);
-                    }, 900);
-                }, 1000);
-            }, 500);
-        }, 750);
-    }, 1000);
-}
-
-function JsonToDOM(json) {
-    let elements = document.createDocumentFragment();
-    for(var item in json) {
-        var item_value = json[item];
-
-        let element;
-        for (var option in item_value) {
-            var option_value = item_value[option];
-
-            switch (option) {
-                case 'tag':
-                    switch (option_value) {
-                        case '#':   element = document.createTextNode(null); break;
-                        case '!--': element = document.createComment(null); break;
-                        default:    element = document.createElement(option_value); break;
-                    }
-                    break;
-                case 'attrs':
-                    for (var attr in option_value)
-                        element.setAttribute(attr, option_value[attr]);
-                    break;
-                case 'content':
-                    if (Array.isArray(option_value))
-                        element.appendChild(JsonToDOM(option_value));
-                    else if (element.constructor == Comment.prototype.constructor || element.constructor == Text.prototype.constructor)
-                        element.data = option_value;
-                    else
-                        element.innerHTML = option_value;
-            }
-        }
-        elements.appendChild(element);
-    }
-    return elements;
-}
-//#endregion
+    setTimeout(ReadHash, 500);
+};
 
 //#region Popups
 OnDOMContentLoaded(function () {
@@ -367,7 +28,7 @@ OnDOMContentLoaded(function () {
     });
 
     $(".phone_call").on("click",function(){
-        let id_tel = $(this).attr("data-call");
+        var id_tel = $(this).attr("data-call");
         console.log("you eblan");
         if(id_tel == "more_anal")
             location.replace("tel:+73462582540");
@@ -383,7 +44,7 @@ function OpenOverlay(overlay_id) {
 //#endregion
 
 //#region OnScroll
-let menu, content;
+var menu, content;
 function checkMenuPosition() {
     if (!menu)
         menu = document.getElementById("menu");
@@ -396,7 +57,7 @@ function checkMenuPosition() {
         if (!content.attributes.dontconsideheightofthemenu)
             content.style.paddingTop = menu.offsetHeight + "px";
         if (window.pageYOffset < 110) {
-            content.style.paddingTop = "unset";
+            content.style.paddingTop = null;
             menu.classList.remove("fixed");
         }
     }
@@ -512,11 +173,15 @@ OnDOMContentLoaded(function() {
 });
 
 function TrimHash(href) {
+    if (isEmpty(href))
+        return "";
     var index = href.indexOf('#');
     return index == -1 ? href : href.substr(0, index);
 }
 
 function GetHash(href) {
+    if (isEmpty(href))
+        return "";
     var index = href.indexOf('#');
     return index == -1 ? "" : href.substr(index + 1);
 }
@@ -525,7 +190,7 @@ function TransitionTo(href) {
     var current = TrimHash(window.location.href);
     var new_href = TrimHash(href);
 
-    if (!current.endsWith(new_href)) {
+    if (!current.endsWith(new_href) && new_href) {
         document.body.addEventListener('transitionend', function(ee) {
             if (ee.target == document.body)
                 window.location.href = href;
@@ -555,12 +220,7 @@ function ReadHash() {
 }
 //#endregion
 
-window.onload = function() {
-    document.body.style.opacity = 1;
-
-    setTimeout(ReadHash, 300);
-};
-
+//#region Scroll Functions
 function ScrollToElem(ID) {
     var elem = document.getElementById(ID);
     var to = elem.offsetTop - menu.offsetHeight;
@@ -588,15 +248,9 @@ const SmoothScroll = function(top) {
         SmoothScroll(top);
     }, 1);
 }
+//#endregion
 
-function IsFirefox() {
-    return ua.indexOf("Firefox") != -1;
-}
-
-function IsIE() {
-    return ua.indexOf("MSIE") != -1 || ua.indexOf("Edge") != -1 || ua.indexOf(".NET") != -1;
-}
-
+//#region Extension
 const isEmpty = function(str) {
     return (!str || str.length === 0 || !str.trim());
 };
@@ -614,3 +268,4 @@ String.prototype.endsWith = function(str) {
 String.prototype.startsWith = function(str) {
     return this.slice(0, str.length) == str;
 }
+//#endregion

@@ -431,7 +431,8 @@ ul#menu li a:hover::after {
     border-radius: 6px;
     box-shadow: 0 0 16px rgba(0,0,0,.1);
     border: 1px solid #dadce0;
-    overflow: auto hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
     padding: 0 0 15px 30px;
 }
 .content div.grid::after {
@@ -452,26 +453,22 @@ ul#menu li a:hover::after {
     list-style-type: none;
 }
 .content div.grid ul[columns=three] {
-    -ms-grid-columns: 3fr 1.3fr 1.3fr;
-    grid-template-columns: 3fr 1.3fr 1.3fr;
+    -ms-grid-columns: 3fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
 }
 .content div.grid ul[columns=four] {
     -ms-grid-columns: 4fr 1fr 1fr 1fr;
     grid-template-columns: 4fr 1fr 1fr 1fr;
 }
 
-.content div.grid ul[columns=two] li:nth-child(-n+2),
-.content div.grid ul[columns=three] li:nth-child(-n+3),
-.content div.grid ul[columns=four] li:nth-child(-n+4) {
+.content div.grid ul li.column-header {
     position: relative;
     display: flex;
     padding: 30px 0 0px 0;
     box-sizing: border-box;
 }
 
-.content div.grid ul[columns=two] li:not(:nth-child(-n+2)),
-.content div.grid ul[columns=three] li:not(:nth-child(-n+3)),
-.content div.grid ul[columns=four] li:not(:nth-child(-n+4)) {
+.content div.grid ul li {
     position: relative;
     display: flex;
     align-items: center;
@@ -479,9 +476,7 @@ ul#menu li a:hover::after {
     padding: 15px 0 15px 0;
 }
 
-.content div.grid ul[columns=two] li:nth-child(2n + 1):not(:nth-child(-n+2)),
-.content div.grid ul[columns=three] li:nth-child(3n + 1):not(:nth-child(-n+3)),
-.content div.grid ul[columns=four] li:nth-child(4n + 1):not(:nth-child(-n+4)) {
+.content div.grid ul li.first-column {
     font-weight: 700;
     margin: 0 15px 0 15px;
 }
@@ -491,17 +486,8 @@ ul#menu li a:hover::after {
     font-weight: 700;
 } */
 
-.content div.grid ul[columns=two] li:nth-child(2n)::after,
-.content div.grid ul[columns=two] li:nth-child(1)::after,
-
-.content div.grid ul[columns=three] li:nth-child(3n)::after,
-.content div.grid ul[columns=three] li:nth-child(3n - 1)::after,
-.content div.grid ul[columns=three] li:nth-child(1)::after,
-
-.content div.grid ul[columns=four] li:nth-child(4n)::after,
-.content div.grid ul[columns=four] li:nth-child(4n - 1)::after,
-.content div.grid ul[columns=four] li:nth-child(4n - 2)::after,
-.content div.grid ul[columns=four] li:nth-child(1)::after {
+.content div.grid ul li.underline::after,
+.content div.grid ul li.strikethrough::after {
     display: block;
     position: absolute;
     content: ".";
@@ -512,6 +498,11 @@ ul#menu li a:hover::after {
     background: #f2f5ff;
     bottom: -1px;
     width: 100%;
+}
+
+.content div.grid ul li.strikethrough::after {
+    top: -1px;
+    bottom: auto;
 }
 
 .content div.grid ul li h2 {
