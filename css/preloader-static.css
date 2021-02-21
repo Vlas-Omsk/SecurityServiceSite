@@ -2,27 +2,33 @@
 div.logo div#line {
     width: 100%;
     transition: none;
+    will-change: auto;
 }
 
 #plug {
     opacity: 0;
     transition: none;
     display: none;
+    will-change: auto;
 }
 
 #logo-box {
     top: 0;
+    transform: none;
     transition: none;
+    will-change: auto;
 }
 
 #logo-box #helmet {
     height: 110px;
     opacity: 1;
     transition: none;
+    will-change: auto;
 }
 
 #logo-box #circle {
     transition: none;
+    will-change: auto;
 }
 
 #logo-box #label {

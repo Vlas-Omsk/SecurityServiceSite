@@ -2,6 +2,9 @@
 
 body{
     margin: 0;
+}
+
+*{
     font-family: 'Raleway', sans-serif;
     word-wrap: break-word;
 }
@@ -16,10 +19,23 @@ body                     = *px
 /*#region header*/
 header {
     position: relative;
-    height: 180px;
+    min-height: 110px;
     width: 100%;
     background-color: black;
 }
+
+/* header.fixed ~ div.logo {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+}
+
+header.fixed ~ div#logo-box {
+    position: fixed;
+    width: 100%;
+    background: black;
+    z-index: 999;
+} */
 
 div.logo {
     position: absolute;
@@ -29,6 +45,7 @@ div.logo {
     width: 100%;
     justify-content: center;
     pointer-events: none;
+    z-index: 9998;
 }
 
 div.logo div#line {
@@ -39,26 +56,42 @@ div.logo div#line {
     transition: width 2s cubic-bezier(.6,0,0,1);
 }
 
-header > ul {
-    height: 70px;
+ul#menu {
+    min-height: 70px;
     margin: 0;
     padding: 0;
+    background-color: inherit;
     position: relative;
-    top: 110px;
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 115px 0 5px 0;
+    transition: height .2s, background-color .2s;
 }
 
-header > ul li {
+ul#menu.disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+ul#menu.fixed {
+    position: fixed;
+    width: 100%;
+    padding: 5px 0;
+    background-color: black;
+    z-index: 999;
+}
+
+ul#menu li {
     list-style: none;
     vertical-align: middle;
-    padding: 0 10px;
+    padding: 2px 10px
 }
 
-header > ul li a {
+ul#menu li a {
     position: relative;
     display: block;
     font-size: 14px;
@@ -70,7 +103,7 @@ header > ul li a {
     cursor: pointer;
 }
 
-header > ul li a::after {
+ul#menu li a::after {
     display: block;
     position: relative;
     content: ".";
@@ -83,7 +116,7 @@ header > ul li a::after {
     transition: width .5s;
 }
 
-header > ul li a:hover::after {
+ul#menu li a:hover::after {
     width: 100%;
 }
 /*#endregion*/
@@ -119,6 +152,7 @@ header > ul li a:hover::after {
     left: 0;
     background-color: rgba(0, 0, 0, .8);
     display: none;
+    z-index: 9999;
 }
 
 .popup {
@@ -130,11 +164,17 @@ header > ul li a:hover::after {
     width: 400px;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
     padding: 40px;
+    transform: translate(-50%, -50%);
     box-sizing: border-box;
     background-color: #1b1f22;
     color: #fff;
+}
+
+.popup div:not([class]) {
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .popup hr {
@@ -147,6 +187,16 @@ header > ul li a:hover::after {
         width: 100%;
         height: 100vh;
         font-size: 15px;
+        padding: 0;
+    }
+}
+
+@media screen and (max-height: 460px) {
+    .popup {
+        width: 100%;
+        height: 100vh;
+        font-size: 15px;
+        padding: 0;
     }
 }
 
@@ -233,6 +283,9 @@ header > ul li a:hover::after {
     height: 100%;
     background-color: black;
     transition: opacity 2s cubic-bezier(.6,0,0,1);
+    z-index: 9998;
+
+    will-change: pointer-events, opacity;
 }
 
 #logo-box {
@@ -242,16 +295,24 @@ header > ul li a:hover::after {
     justify-content: center;
     align-items: center;
     width: 100%;
-    top: calc(50vh - 25vh);
-    transition: top 1s cubic-bezier(.6,0,0,1);
+    top: calc(50vh);
+    transform: translateY(-50%);
+    transition: top 1s cubic-bezier(.6,0,0,1), transform 1s cubic-bezier(.6,0,0,1);
+    z-index: 9998;
+    
+    will-change: top, transform;
 }
 
 #logo-box #helmet {
+    display: flex;
+    justify-content: center;
     box-sizing: border-box;
     padding: 20px;
     height: 50vh;
     opacity: 0;
     transition: height 1s cubic-bezier(.6,0,0,1);
+
+    will-change: opacity, height;
 }
 
 #logo-box #circle {
@@ -261,21 +322,60 @@ header > ul li a:hover::after {
     border-radius: 100%;
     background-color: white;
     transition: transform 1.5s, border-radius .5s, height .5s, width .5s;
+
+    will-change: width, height, border-radius, transform;
+}
+
+#logo-box #circle.full {
+    width: 60vh;
+    height: 60vh;
+    border-radius: 30%;
+}
+
+#logo-box #circle.rotate {
+    transform: rotateZ(180deg);
 }
 
 #logo-box #label {
     display: flex;
     overflow: visible hidden;
     transition: opacity .2s;
+
+    will-change: contents, opacity;
 }
 
 #logo-box #label a.label-char {
     position: relative;
     color: white;
     font-weight: 700;
-    font-size: 48px;
+    font-size: 4em;
     transform: translateY(100%);
     transition: transform .4s cubic-bezier(.19,1,.22,1);
+
+    will-change: contents, transform;
+}
+
+@media screen and (orientation: portrait) {
+    #logo-box #helmet {
+        height: 25vh;
+    }
+
+    #logo-box #circle.full {
+        width: 30vh;
+        height: 30vh;
+        border-radius: 30%;
+        transform: rotateZ(180deg);
+    }
+
+    #logo-box #label a.label-char {
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-height: 480px) {
+    #logo-box #label a.label-char {
+        font-size: 2em;
+    }
 }
 /*#endregion*/
 
@@ -285,21 +385,32 @@ header > ul li a:hover::after {
     box-sizing: border-box;
 }
 
-.content h2 {
+.content h1 {
     text-align: center;
     font-weight: 700;
     font-size: 4em;
     /* font-size: 100px; */
 }
 
-.content p {
-    padding: 0 2vw;
-    box-sizing: border-box;
-    text-align: justify;
+.content h2 {
+    text-align: center;
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 
 .content h3 {
     padding: 0 2vw;
+}
+
+.content p {
+    padding: 0 2vw;
+    box-sizing: border-box;
+    text-align: justify;
 }
 
 .content .enum {
@@ -314,7 +425,110 @@ header > ul li a:hover::after {
 /*#endregion*/
 
 /*#region grid*/
-.grid {
+.content div.grid {
+    display: flex;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 0 16px rgba(0,0,0,.1);
+    border: 1px solid #dadce0;
+    overflow: auto hidden;
+    padding: 0 0 15px 30px;
+}
+.content div.grid::after {
+    position: relative;
+    min-width: 30px;
+    content: ' ';
+    opacity: 0;
+}
+
+.content div.grid ul {
+    display: -ms-inline-grid;
+    display: grid;
+    grid-column-gap: 30px;
+    -ms-grid-columns: 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.content div.grid ul[columns=three] {
+    -ms-grid-columns: 3fr 1.3fr 1.3fr;
+    grid-template-columns: 3fr 1.3fr 1.3fr;
+}
+.content div.grid ul[columns=four] {
+    -ms-grid-columns: 4fr 1fr 1fr 1fr;
+    grid-template-columns: 4fr 1fr 1fr 1fr;
+}
+
+.content div.grid ul[columns=two] li:nth-child(-n+2),
+.content div.grid ul[columns=three] li:nth-child(-n+3),
+.content div.grid ul[columns=four] li:nth-child(-n+4) {
+    position: relative;
+    display: flex;
+    padding: 30px 0 0px 0;
+    box-sizing: border-box;
+}
+
+.content div.grid ul[columns=two] li:not(:nth-child(-n+2)),
+.content div.grid ul[columns=three] li:not(:nth-child(-n+3)),
+.content div.grid ul[columns=four] li:not(:nth-child(-n+4)) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 15px 0 15px 0;
+}
+
+.content div.grid ul[columns=two] li:nth-child(2n + 1):not(:nth-child(-n+2)),
+.content div.grid ul[columns=three] li:nth-child(3n + 1):not(:nth-child(-n+3)),
+.content div.grid ul[columns=four] li:nth-child(4n + 1):not(:nth-child(-n+4)) {
+    font-weight: 700;
+    margin: 0 15px 0 15px;
+}
+
+/* Чередование жирности 2 последних */
+/* .content div.grid ul[columns=three] li:nth-child(2n + 1):not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)) {
+    font-weight: 700;
+} */
+
+.content div.grid ul[columns=two] li:nth-child(2n)::after,
+.content div.grid ul[columns=two] li:nth-child(1)::after,
+
+.content div.grid ul[columns=three] li:nth-child(3n)::after,
+.content div.grid ul[columns=three] li:nth-child(3n - 1)::after,
+.content div.grid ul[columns=three] li:nth-child(1)::after,
+
+.content div.grid ul[columns=four] li:nth-child(4n)::after,
+.content div.grid ul[columns=four] li:nth-child(4n - 1)::after,
+.content div.grid ul[columns=four] li:nth-child(4n - 2)::after,
+.content div.grid ul[columns=four] li:nth-child(1)::after {
+    display: block;
+    position: absolute;
+    content: ".";
+    margin: 0 auto;
+    left: 0;
+    color: transparent;
+    height: 1px;
+    background: #f2f5ff;
+    bottom: -1px;
+    width: 100%;
+}
+
+.content div.grid ul li h2 {
+    text-align: left;
+    font-weight: 700;
+    margin: auto 15px 20px 15px;
+}
+
+.content div.grid ul li h3 {
+    font-weight: 700;
+    margin: auto 0 20px 0;
+    padding: 0;
+}
+/*#endregion*/
+
+/*#region tiles*/
+.tiles {
     display: -ms-inline-grid;
     display: grid;
     list-style-type: none;
@@ -327,7 +541,7 @@ header > ul li a:hover::after {
     width: 100%;
 }
 
-.grid li {
+.tiles li {
     margin: 7.5px;
     box-sizing: border-box;
     overflow: hidden;
@@ -336,113 +550,23 @@ header > ul li a:hover::after {
     grid-column: auto;
 }
 
-.grid li:nth-child(1) {
-    -ms-grid-column: 1;
-    -ms-grid-row: 1;
-}
-
-.grid li:nth-child(2) {
-    -ms-grid-column: 2;
-    -ms-grid-row: 1;
-}
-
-.grid li:nth-child(3) {
-    -ms-grid-column: 3;
-    -ms-grid-row: 1;
-}
-
-.grid li:nth-child(4) {
-    -ms-grid-column: 1;
-    -ms-grid-row: 2;
-}
-
-.grid li:nth-child(5) {
-    -ms-grid-column: 2;
-    -ms-grid-row: 2;
-}
-
-.grid li:nth-child(6) {
-    -ms-grid-column: 3;
-    -ms-grid-row: 2;
-}
-
 @media screen and (max-width: 960px) {
-    .grid {
+    .tiles {
         grid-template-columns: 1fr 1fr;
         -ms-grid-columns: 1fr 1fr;
         -ms-grid-rows: 1fr 1fr 1fr;
     }
-
-    .grid li:nth-child(1) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 1;
-    }
-    
-    .grid li:nth-child(2) {
-        -ms-grid-column: 2;
-        -ms-grid-row: 1;
-    }
-    
-    .grid li:nth-child(3) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 2;
-    }
-    
-    .grid li:nth-child(4) {
-        -ms-grid-column: 2;
-        -ms-grid-row: 2;
-    }
-    
-    .grid li:nth-child(5) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 3;
-    }
-    
-    .grid li:nth-child(6) {
-        -ms-grid-column: 2;
-        -ms-grid-row: 3;
-    }
 }
 
 @media screen and (max-width: 480px) {
-    .grid {
+    .tiles {
         grid-template-columns: 1fr;
         -ms-grid-columns: 1fr;
         -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
-
-    .grid li:nth-child(1) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 1;
-    }
-    
-    .grid li:nth-child(2) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 2;
-    }
-    
-    .grid li:nth-child(3) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 3;
-    }
-    
-    .grid li:nth-child(4) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 4;
-    }
-    
-    .grid li:nth-child(5) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 5;
-    }
-    
-    .grid li:nth-child(6) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 6;
-    }
 }
 
-.grid li img {
+.tiles li img {
     width: 100%;
     transform: scale(1.05);
     opacity: 1;
@@ -450,15 +574,15 @@ header > ul li a:hover::after {
     transition: transform 2s cubic-bezier(.19,1,.22,1), opacity .8s cubic-bezier(.19,1,.22,1);
 }
 
-.grid li:hover img {
+.tiles li:hover img {
     transform: scale(1.1);
 }
 
-.grid li:active img {
+.tiles li:active img {
     transform: scale(1.05);
 }
 
-.grid li.hidden img {
+.tiles li.hidden img {
     transform: scale(1.2);
     opacity: 0;
 }
@@ -502,8 +626,8 @@ header > ul li a:hover::after {
 }
 
 *::-webkit-scrollbar-button {
-    width: 6px;
-    height: 6px;
+    width: 0px;
+    height: 0px;
     background: rgb(190, 190, 190);
     content: "\\";
     color: whitesmoke;
