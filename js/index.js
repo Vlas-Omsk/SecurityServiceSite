@@ -1,5 +1,7 @@
 window.onload = function() {
     document.body.style.opacity = 1;
+    window.onscroll();
+    FixIEActive();
 
     setTimeout(ReadHash, 500);
 };
@@ -76,7 +78,7 @@ function isOnVisibleSpace(element) {
 
 var listenedElements = [];
 OnDOMContentLoaded(function() {
-    $(document).on('scroll', function() {
+    OnScroll(function() {
         checkMenuPosition();
 
         listenedElements.forEach(function(item, index) {
@@ -267,5 +269,107 @@ String.prototype.endsWith = function(str) {
 
 String.prototype.startsWith = function(str) {
     return this.slice(0, str.length) == str;
+}
+
+String.prototype.sliceTo = function(str) {
+    return this.slice(0, this.indexOf(str));
+}
+
+String.prototype.sliceFrom = function(str) {
+    return this.slice(this.lastIndexOf(str) + str.length);
+}
+
+Array.prototype.Any = function(expr) {
+    for (var i = 0; i < this.length; i++) {
+        var elem = this[i];
+        if (expr(elem))
+            return true;
+    }
+    return false;
+}
+//#endregion
+
+//#region FixIEActive
+// This script fixes the work of the pseudo element :active in IE
+
+const StylesToFix = [
+    "css/ie-compatible.css",
+    "css/index.css",
+    "css/preloader-static.css",
+    "css/slider.css"
+];
+
+const PseudoelementsToOverride = [
+    ":hover"
+];
+
+const active_attr = ":active";
+
+function makeid()
+{
+    var text = "";
+    var possible ="ABCDEFGHIJKLMNOPQRSTUVWXYZ" + "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toLowerCase();
+    for( var i=0; i < 7; i++ ){
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    var possibleNums ="0123456789";
+    for( var j=0; j < 7; j++ ){
+        text += possibleNums.charAt(Math.floor(Math.random() * possibleNums.length));
+    }
+    return text;
+}
+
+function AddStyle(selector, text) {
+    var root = selector.sliceTo(active_attr);
+    var path = selector.sliceFrom(active_attr);
+    var style = document.createElement("style");
+    var id = makeid();
+    style.innerHTML = root + '.' + id + ' ' + path + ' {\r\n' + text + '\r\n}\r\n';
+    for (var i = 0; i < PseudoelementsToOverride.length; i++)
+        style.innerHTML += root + '.' + id + PseudoelementsToOverride[i] + ' ' + path + ' {\r\n' + text + '\r\n}\r\n';
+    $(document.body).prepend(style);
+
+    return id;
+}
+
+function FixIEActive() {
+    if (!IsIE())
+        return;
+
+    console.log("FixIEActive: Stylesheets count: " + document.styleSheets.length);
+
+    for (var stylesheet_id = 0; stylesheet_id < document.styleSheets.length; stylesheet_id++) {
+        var stylesheet = document.styleSheets[stylesheet_id];
+        
+        if (!stylesheet.href || StylesToFix.Any(function(elem) { return stylesheet.href.endsWith(elem); })) {
+            try {
+                for (var rule_id = 0; rule_id < stylesheet.rules.length; rule_id++) {
+                    var rule = stylesheet.rules[rule_id];
+                    
+                    if (rule.constructor == CSSStyleRule) {
+                        if (rule.selectorText.indexOf(active_attr) != -1) {
+                            console.log(rule.selectorText);
+                            var style_id = AddStyle(rule.selectorText, rule.style.cssText);
+
+                            $(rule.selectorText.sliceTo(active_attr)).each(function(i, elem) {
+                                var style_id_copy = style_id;
+
+                                elem = $(elem);
+                                elem.mousedown(function() {
+                                        if (!elem.hasClass(style_id_copy))
+                                            elem.addClass(style_id_copy);
+                                    });
+                                $(window).mouseup(function() {
+                                        elem.removeClass(style_id_copy);
+                                    });
+                            });
+                        }
+                    }
+                }
+            } catch (ex) {
+                console.warn("FixIEActive: " + ex.message);
+            }
+        }
+    }
 }
 //#endregion

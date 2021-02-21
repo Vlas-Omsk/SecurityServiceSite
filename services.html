@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Отзывы</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+        <meta http-equiv="Content-Language" content="ru"/>
+        <meta name="pragma" content="no-cashe"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="media/favicon.png" type="image-x/png"/>
+
+        <link href="css/index.css" rel="stylesheet"/>
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/inject-static-elements.js"></script>
+        <script src="js/index.js"></script>
+
+        <style>
+            .tiles[two-columns] {
+                grid-template-columns: 1fr 1fr;
+                -ms-grid-columns: 1fr 1fr;
+                -ms-grid-rows: 1fr;
+            }
+
+            @media screen and (max-width: 480px) {
+                .tiles[two-columns] {
+                    grid-template-columns: 1fr;
+                    -ms-grid-columns: 1fr;
+                    -ms-grid-rows: 1fr 1fr;
+                }
+            }
+
+            .tiles[one-elem] {
+                grid-template-columns: 1fr;
+                -ms-grid-columns: 1fr;
+                -ms-grid-rows: 1fr;
+            }
+
+            .tiles[one-row] {
+                grid-template-columns: 1fr 1fr 1fr;
+                -ms-grid-columns: 1fr 1fr 1fr;
+                -ms-grid-rows: 1fr;
+            }
+
+            @media screen and (max-width: 960px) {
+                .tiles {
+                    grid-template-columns: 1fr 1fr;
+                    -ms-grid-columns: 1fr 1fr;
+                    -ms-grid-rows: 1fr 1fr;
+                }
+            }
+
+            @media screen and (max-width: 480px) {
+                .tiles {
+                    grid-template-columns: 1fr;
+                    -ms-grid-columns: 1fr;
+                    -ms-grid-rows: 1fr 1fr 1fr;
+                }
+            }
+        </style>
+    </head>
+    <body debug="true">
+        <div class="content">
+            <h1><i>Почему доверяют</i> Группе компаний Спарта?</h1>
+            <p>Группа компаний Спарта более десяти лет качественно и профессионально обеспечивают охрану и безопасность вверенных объектов.</p>
+
+            <h3>Основной объём услуг занимает обеспечение охраны объектов собственности, в которые входит:</h3>
+            <ul class="enum">
+                <li>Производственные объекты нефтегазодобывающего комплекса</li>
+                <li>Промышленные объекты и базы со сложным рельефом охраняемых территорий</li>
+            </ul>
+
+            <p>Но мы хотим обратить внимание наших клиентов и на наши следующие услуги — пультовая и физическая охрана, услуги (детектора лжи) полиграфа.</p>
+            <ul class="tiles" style="-ms-grid-rows: 1fr;">
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/1-42.jpg"/>
+                    </div>
+                </li>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/2-1-Pult.jpg"/>
+                    </div>
+                </li>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/5-2.jpg"/>
+                    </div>
+                </li>
+            </ul>
+
+            <hr>
+            <p>Никогда не пренебрегайте безопасностью в вопросах своего жилища, объектов недвижимости.</p>
+            <h3>Что может быть проще, чем заказать:</h3>
+            <ul class="enum">
+                <li>Услугу видеонаблюдения</li>
+                <li>Датчики проникновения</li>
+                <li>Датчик открытия дверей</li>
+                <li>Датчик разбитие окна</li>
+                <li>Датчик движения</li>
+                <li>Датчик задымления</li>
+                <li>Датчик протечки воды</li>
+                <li>Датчик температуры</li>
+                <li>Датчик утечки газа</li>
+                <li>Тревожную кнопку</li>
+            </ul>
+
+            <h3>И вы забудете о</h3>
+            <ul class="enum">
+                <li>Кражах</li>
+                <li>Взломах</li>
+                <li>Хищениях</li>
+                <li>Актах вандализма</li>
+            </ul>
+
+            <p>Позаботьтесь о сохранности своего жилища, и качество Вашей жизни многократно улучшится, ведь в Вашей жизни больше не будет места тревогам, заботам, страхам о пожаре в загородном доме, коттедже, квартире. И всё это благодаря услуге установки пожарной сигнализации.</p>
+            <ul class="tiles" two-columns>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/3-4-Videonablyudenie.jpg"/>
+                    </div>
+                </li>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/6-4-POS.jpg"/>
+                    </div>
+                </li>
+            </ul>
+
+            <hr>
+            <p>Если Вы все еще сомневаетесь в честности Вашего окружения на работе, скорее решайтесь прибегнуть к услугам полиграфа. Наши опытные специалисты-полиграфологи высочайшего класса без труда отделят ложь от правды. Возможно, Ваши худшие опасения окажутся напрасными, и тревоги не подтвердятся.</p>
+            <p>Все пагубные хитросплетения в семейных отношениях тоже можно пресечь, обратившись в нашу Группу компаний Спарта. Полная конфиденциальность и стопроцентная гарантия качества при самых низких ценах в Сургуте.</p>
+            <ul class="tiles" one-elem>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/5-2.jpg"/>
+                    </div>
+                </li>
+            </ul>
+
+            <hr>
+            <p>Транспортировку денежных масс, ювелирных драгоценностей, ценных бумаг доверьте профессионалам инкассационной службы Группу компаний Спарта. Грамотные толковые сотрудники благодаря многолетнему опыту и мастерству не допустят прецедента ограбления. Ведь тщательной проработке подвергаются не только маршруты следования, но и многие профессиональные моменты, скрытые от глаз простого обывателя.</p>
+            <ul class="tiles" one-elem>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/4-1-Inkasatsiya.jpg"/>
+                    </div>
+                </li>
+            </ul>
+
+            <hr>
+            <p>Если Вам пришла мысль об угрозе Вашей личной безопасности, либо безопасности Ваших близких, не откладывайте обращение в Группу компаний Спарта.</p>
+            <p>Возможно, на подсознательном уровне Вы более реально оцениваете риски, и пришло время довериться услугам телохранителя. Берегите свою жизнь и жизнь дорогих Вам людей.</p>
+            <ul class="tiles" one-elem>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/1-42.jpg"/>
+                    </div>
+                </li>
+            </ul>
+
+            <hr>
+            <p>Контролируйте весь оборот материальных ценностей на производстве.</p>
+            <h3>Нет ничего проще установки</h3>
+            <ul class="enum">
+                <li>Счётчиков рабочего времени</li>
+                <li>Датчиков доступа и некоторых других устройств для целевого использования всех ресурсов Вашего предприятия сотрудниками</li>
+            </ul>
+
+            <ul class="tiles" one-elem>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/6-4-POS.jpg"/>
+                    </div>
+                </li>
+            </ul>
+
+            <hr>
+            <p>Если из вышеперечисленных услуг Вы не нашли информацию по какому-то сугубо конкретному узкому вопросу, скорее обратитесь в нашу диспетчерскую службу, и мы в кратчайшие сроки грамотно разрешим Вашу сложившуюся ситуацию, какой бы сложной она не казалась.</p>
+            <div style="display: flex; justify-content: center;">
+                <style>
+                    .black_underline::after {
+                        background-color: black;
+                    }
+                </style>
+                <a class="js-button header_menu_a black_underline" overlay-id="campaign" style="font-size: 18px; color: black;">Контакты</a>
+            </div>
+            <p>Специалисты Группы компаний Спарта готовы к сотрудничеству и организации охранных услуг с учетом индивидуального подхода к каждому клиенту, ведь ситуации иногда выходят за рамки общепринятого стандарта. Мы разработаем методы, переберем все варианты, чтобы со стопроцентной уверенностью гарантировать неприкосновенность Вам и Вашим ценностям.</p>
+
+            <h1>Группа компаний Спарта 10 лет на страже Вашей безопасности в Сургуте!</h1>
+        </div>
+    </body>
+</html>

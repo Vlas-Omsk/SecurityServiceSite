@@ -42,7 +42,7 @@
             }
         </style>
     </head>
-    <body inject-static-elements="popups" debug="false">
+    <body inject-static-elements="popups, menu" debug="true">
         <!--#region header-->
         <header>
             <div class="slider" auto-slide="3000">
@@ -56,26 +56,6 @@
 
                 <div class="title"><h1></h1></div>
             </div>
-            <ul id="menu">
-                <li>
-                    <a transition href="index.html#scrollto_services">Наши услуги</a>
-                </li>
-                <li>
-                    <a transition href="index.html#scrollto_documents">Наши документы</a>
-                </li>
-                <li>
-                    <a transition href="price.html">Цены на услуги</a>
-                </li>
-                <li>
-                    <a transition href="feedback.html">Отзывы</a>
-                </li>
-                <li>
-                    <a transition href="job.html">Вакансия</a>
-                </li>
-                <li>
-                    <a class="js-button" overlay-id="campaign">Контакты</a>
-                </li>
-            </ul>
         </header>
         <div class="logo">
             <div id="line"></div>
@@ -86,23 +66,35 @@
             <h1 id="services">Наши <i>услуги</i></h1>
 
             <ul class="tiles">
-                <li transition class="hidden" OnScrollVisible="~200; -hidden">
-                    <img src="media/index-grid/1-42.jpg"/>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/1-42.jpg"/>
+                    </div>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~200; -hidden">
-                    <img src="media/index-grid/2-1-Pult.jpg"/>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/2-1-Pult.jpg"/>
+                    </div>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~200; -hidden">
-                    <img src="media/index-grid/3-4-Videonablyudenie.jpg"/>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/3-4-Videonablyudenie.jpg"/>
+                    </div>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~200; -hidden">
-                    <img src="media/index-grid/4-1-Inkasatsiya.jpg"/>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/4-1-Inkasatsiya.jpg"/>
+                    </div>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~200; -hidden">
-                    <img src="media/index-grid/5-2.jpg"/>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/5-2.jpg"/>
+                    </div>
                 </li>
-                <li transition class="hidden" OnScrollVisible="~200; -hidden">
-                    <img src="media/index-grid/6-4-POS.jpg"/>
+                <li>
+                    <div transition class="hidden" OnScrollVisible="~200; -hidden">
+                        <img src="media/index-grid/6-4-POS.jpg"/>
+                    </div>
                 </li>
             </ul>
 
@@ -161,7 +153,6 @@
             <h1>Наши <i>Клиенты</i></h1>
 
             <h3>За время работы с нами заключили договора:</h3>
-
             <ul class="enum">
                 <li>Филиалы Компании «Шлюмберже Лоджелко, Инк» в ХМАО, ЯНАО и республике Коми, Томская, Новосибирская, Волгоградская и Оренбургская области</li>
                 <li>Филиалы Компании «ПетроАльянс Сервис Компании Лимитед» в ХМАО, ЯНАО и республике Коми</li>
@@ -179,7 +170,6 @@
             <p>Практически от всех охраняемых объектов в адрес руководства и сотрудников компании поступили благодарственные письма за качество охранных услуг. За долгое время своей работы на рынке охранных услуг мы накопили большой опыт в обеспечении охраны объектов, осуществляя контрольно- пропускной и внутриобъектовые режимы.</p>
 
             <h3>Под нашей охранной находятся:</h3>
-
             <ul class="enum">
                 <li>производственные объекты нефтегазодобывающего комплекса</li>
                 <li>промышленные объекты и базы со сложным рельефом охраняемых территорий и большим количеством расположенных на указанных территориях зданий и сооружений</li>

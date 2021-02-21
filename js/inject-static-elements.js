@@ -2,7 +2,7 @@
 var ua = window.navigator.userAgent,
     isDOMContentLoaded = false,
     DOMContentLoadedListeners = [],
-    BeforeInvokeDOMContentLoaded;
+    BeforeInvokeDOMContentLoaded = function() { };
 
 if (IsIE()) {
     document.onreadystatechange = function () {
@@ -28,56 +28,82 @@ function OnDOMContentLoaded(callback) {
 }
 //#endregion
 
-const header = [
-    { 'tag': '!--', 'content': '#region header' },
+//#region OnScroll
+var OnScrollListeners = [];
+
+window.onscroll = function() {
+    OnScrollListeners.forEach(function(elem) { elem.callback.call() });
+}
+
+function RemoveOnScroll(elem) {
+    if (elem.constructor == String) {
+        for (var i = 0; i < OnScrollListeners.length; i++)
+            if (OnScrollListeners[i].namespace == elem)
+                delete OnScrollListeners[i];
+    } else if (elem.constructor == Number) {
+        delete OnScrollListeners[elem];
+    } else {
+        for (var i = 0; i < OnScrollListeners.length; i++)
+            if (OnScrollListeners[i] == elem)
+                delete OnScrollListeners[i];
+    }
+}
+
+function OnScroll(callback, namespace) {
+    OnScrollListeners.push({ 'callback': callback, 'namespace': namespace });
+}
+//#endregion
+
+const menu_json = [
     {
-        'tag': 'header',
+        'tag': 'ul',
+        'attrs': {
+            'id': 'menu'
+        },
         'content': [
-            {
-                'tag': 'ul',
-                'attrs': {
-                    'id': 'menu'
-                },
-                'content': [
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Наши услуги', 'attrs': { 'transition': '', 'href': 'index.html#scrollto_services' } }
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Наши документы', 'attrs': { 'transition': '', 'href': 'index.html#scrollto_documents' } } 
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Цены на услуги', 'attrs': { 'transition': '', 'href': 'price.html' } } 
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Отзывы', 'attrs': { 'transition': '', 'href': 'feedback.html' } } 
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Вакансия', 'attrs': { 'transition': '', 'href': 'job.html' } } 
-                        ] 
-                    },
-                    { 
-                        'tag': 'li', 
-                        'content': [ 
-                            { 'tag': 'a', 'content': 'Контакты', 'attrs': { 'class': 'js-button', 'overlay-id': 'campaign' } } 
-                        ]
-                    }
+            { 
+                'tag': 'li', 
+                'content': [ 
+                    { 'tag': 'a', 'content': 'Наши услуги', 'attrs': { 'transition': '', 'href': 'services.html'/*'index.html#scrollto_services'*/ } }
+                ] 
+            },
+            { 
+                'tag': 'li', 
+                'content': [ 
+                    { 'tag': 'a', 'content': 'Наши документы', 'attrs': { 'transition': '', 'href': 'index.html#scrollto_documents' } } 
+                ] 
+            },
+            { 
+                'tag': 'li', 
+                'content': [ 
+                    { 'tag': 'a', 'content': 'Цены на услуги', 'attrs': { 'transition': '', 'href': 'price.html' } } 
+                ] 
+            },
+            { 
+                'tag': 'li', 
+                'content': [ 
+                    { 'tag': 'a', 'content': 'Отзывы', 'attrs': { 'transition': '', 'href': 'feedback.html' } } 
+                ] 
+            },
+            { 
+                'tag': 'li', 
+                'content': [ 
+                    { 'tag': 'a', 'content': 'Вакансия', 'attrs': { 'transition': '', 'href': 'job.html' } } 
+                ] 
+            },
+            { 
+                'tag': 'li', 
+                'content': [ 
+                    { 'tag': 'a', 'content': 'Контакты', 'attrs': { 'class': 'js-button', 'overlay-id': 'campaign' } } 
                 ]
             }
         ]
+    }
+];
+const header = [
+    { 'tag': '!--', 'content': '#region header' },
+    {
+        'tag': 'header'
     },
     {
         'tag': 'div',
@@ -213,8 +239,7 @@ const preloader = [
 
 BeforeInvokeDOMContentLoaded = function () {
     const body = $(document.body);
-    if (IsIE())
-    {
+    if (IsIE()) {
         body.append(JsonToDOM([
             {
                 'tag': 'link',
@@ -227,20 +252,19 @@ BeforeInvokeDOMContentLoaded = function () {
     }
     if (IsPresto()) {
         document.body.innerHTML = "Мистор, да вы ё*аный извращенец, ваш браузер не сможет нормально отобразить этот сайт<br><br>" + ua;
-        return false;
+        return;
     }
     
-    const elements = (isEmpty(body.attr("inject-static-elements")) ? ["header", "popups"] : body.attr("inject-static-elements").split(','));
+    const elements = (isEmpty(body.attr("inject-static-elements")) ? ["header", "menu", "popups"] : body.attr("inject-static-elements").split(','));
     elements.forEach(function(elem) {
         switch (elem.trim()) {
             case 'header': body.prepend(JsonToDOM(header)); break;
             case 'popups': body.append(JsonToDOM(popups)); break;
+            case 'menu': $("header").append(JsonToDOM(menu_json)); break;
         }
     });
 
     InitPreloaderAnimation();
-
-    return true;
 };
 
 function InitPreloaderAnimation() {
@@ -250,7 +274,7 @@ function InitPreloaderAnimation() {
     if (!IsIE())
     if (isEmpty(document.referrer) || isEmpty(URI().host) || document.referrer.indexOf(URI().host) == -1) {
         $(JsonToDOM(preloader)).insertAfter("header");
-console.log("sdags");
+
         RunPreloaderAnimation();
         return;
     }
@@ -269,9 +293,9 @@ console.log("sdags");
 }
 
 function RunPreloaderAnimation() {
-    $(document).on('scroll.PreloaderAnimation', function() {
+    OnScroll(function() {
         window.scrollTo(0, 0);
-    });
+    }, 'PreloaderAnimation');
 
     var logo_box = $("#logo-box");
     var plug = $("#plug");
@@ -312,7 +336,7 @@ function RunPreloaderAnimation() {
                             circle.css({ 'will-change': 'auto' });
                             helmet.css({ 'will-change': 'auto' });
 
-                            $(document).off('scroll.PreloaderAnimation');
+                            RemoveOnScroll('PreloaderAnimation');
                         }, 250);
                     }, 900);
                 }, 1000);
