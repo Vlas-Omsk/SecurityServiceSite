@@ -1,11 +1,15 @@
 const services = {
-    physical: "",
-    remote: "",
-    video: "",
-    cash: "",
-    polygraph: "",
-    fire: ""
+    physical: ToDataURL('<h1>services.physical</h1>'),
+    remote: ToDataURL('<h1>services.remote</h1>'),
+    video: ToDataURL('<h1>services.video</h1>'),
+    cash: ToDataURL('<h1>services.cash</h1>'),
+    polygraph: ToDataURL('<h1>services.polygraph</h1>'),
+    fire: ToDataURL('<h1>services.fire</h1>')
 };
+
+function ToDataURL(html) {
+    return "data:text/html;charset=utf-8," + encodeURI(html);
+}
 
 window.onload = function() {
     document.body.style.opacity = 1;
@@ -21,18 +25,12 @@ OnDOMContentLoaded(function () {
     $('.js-button').click(function(e) {
         var overlay_id = $(e.target).attr('overlay-id');
         OpenOverlay(overlay_id);
-        isBodyScrollable(false);
     });
-
-    function isBodyScrollable(on) {
-        document.body.style.overflow = on ? null : "hidden";
-    }
 
     // закрыть на крестик
     $('.close-popup').click(function(e) {
         var overlay_id = $(e.target).parent().parent().attr('overlay-id');
-        $('.overlay[overlay-id="' + overlay_id + '"]').fadeOut();
-        isBodyScrollable(true);
+        CloseOverlay(overlay_id);
     });
 
     // закрыть по клику вне окна
@@ -40,8 +38,7 @@ OnDOMContentLoaded(function () {
     $(document).mouseup(function (e) { 
         var popup = $('.popup');
         if (e.target != popup[0] && popup.has(e.target).length === 0){
-            $('.overlay').fadeOut();
-            isBodyScrollable(true);
+            CloseOverlay();
         }
     });
 
@@ -55,9 +52,22 @@ OnDOMContentLoaded(function () {
     });
 });
 
+function ___isBodyScrollable(on) {
+    document.body.style.overflow = on ? null : "hidden";
+}
+
 function OpenOverlay(overlay_id) {
     $('.overlay[overlay-id="' + overlay_id + '"]').fadeIn();
     $('.overlay[overlay-id="' + overlay_id + '"]').addClass('disabled');
+    ___isBodyScrollable(false);
+}
+
+function CloseOverlay(overlay_id) {
+    if (isEmpty(overlay_id))
+        $('.overlay').fadeOut();
+    else
+        $('.overlay[overlay-id="' + overlay_id + '"]').fadeOut();
+    ___isBodyScrollable(true);
 }
 //#endregion
 
@@ -203,24 +213,37 @@ function ___GetHash(href) {
 }
 
 function TransitionTo(href) {
-    href = ___TransitionTo(href);
+    href = ___EvalHref(href);
 
     var current = ___TrimHash(window.location.href);
     var new_href = ___TrimHash(href);
 
-    if (!current.endsWith(new_href) && new_href) {
+    if (!current.endsWith(new_href) && new_href)
+        ___TransitionTo(href, true);
+    else if (___GetHash(window.location.href) != ___GetHash(href) && !isEmpty(___GetHash(href)))
+        ___TransitionTo(href, false);
+}
+
+function ___EvalHref(href) {
+    return href.replace(/\$\{(.*?)\}/g, function(elem) { return eval(elem.slice(2, -1)); });
+}
+
+function ___TransitionTo(href, withtransition) {
+    if (href.startsWith("data:"))
+        ___OpenDataURL(href);
+    else if (withtransition) {
         document.body.addEventListener('transitionend', function(ee) {
             if (ee.target == document.body)
                 window.location.href = href;
         });
         document.body.style.opacity = 0;
-    } else if (___GetHash(window.location.href) != ___GetHash(href) && !isEmpty(___GetHash(href))) {
+    } else
         window.location.href = href;
-    }
 }
 
-function ___TransitionTo(href) {
-    return href.replace(/\$\{(.*?)\}/g, function(elem) { return eval(elem.slice(2, -1)); });
+function ___OpenDataURL(data) {
+    var win = window.open();
+    win.document.write('<iframe src="' + data  + '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>');
 }
 //#endregion
 
