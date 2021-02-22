@@ -675,7 +675,7 @@ body {
 
 .contacts form p > * {
     resize: vertical;
-    padding: 15px;
+    padding: 10px;
     height: 4.5em;
     width: 100%;
     box-sizing: border-box;
@@ -726,5 +726,26 @@ body {
 
 #contact_btn:active {
     background-color: rgb(210, 210, 210);
+}
+
+.multiline-paceholder::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    white-space: pre-line;  
+    position: relative;
+    top: -8px;
+}
+.multiline-paceholder::-moz-placeholder { /* Firefox 19+ */
+    white-space: pre-line;  
+    position: relative;
+    top: -8px;
+}
+.multiline-paceholder:-ms-input-placeholder { /* IE 10+ */
+    white-space: pre-line;  
+    position: relative;
+    top: -8px;
+}
+.multiline-paceholder:-moz-placeholder { /* Firefox 18- */
+    white-space: pre-line;  
+    position: relative;
+    top: -8px;
 }
 /*#endregion*/
