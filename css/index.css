@@ -658,3 +658,57 @@ body {
     cursor: pointer;
 }
 /*#endregion*/
+
+/* FORM */
+.contacts{
+    display: flex;
+    justify-content: center;
+}
+.contact_input{
+  resize: vertical;
+  padding:15px;
+  border-radius:15px;
+  border:0;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+  height:50px;
+  width: 160px;
+}
+
+.full_input{
+    width: 90%;
+}
+
+.contact_btn{
+    resize: vertical;
+  padding:15px;
+  border-radius:15px;
+  border:0;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+  height:50px;
+  width: 100%;
+}
+
+
+
+.job_main_text{
+    display: flex;
+    justify-content: center;
+}
+
+.job_main_text p, .job_main_text ul{
+    
+    width:50%;
+}
+
+.border_sex{
+
+  
+  border-radius:15px;
+  border:0;
+  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+  
+}
+
+#govno_contact{
+    text-decoration: underline;
+}
