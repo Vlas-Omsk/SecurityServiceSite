@@ -1,3 +1,12 @@
+const services = {
+    physical: "",
+    remote: "",
+    video: "",
+    cash: "",
+    polygraph: "",
+    fire: ""
+};
+
 window.onload = function() {
     document.body.style.opacity = 1;
     window.onscroll();
@@ -12,12 +21,18 @@ OnDOMContentLoaded(function () {
     $('.js-button').click(function(e) {
         var overlay_id = $(e.target).attr('overlay-id');
         OpenOverlay(overlay_id);
+        isBodyScrollable(false);
     });
+
+    function isBodyScrollable(on) {
+        document.body.style.overflow = on ? null : "hidden";
+    }
 
     // закрыть на крестик
     $('.close-popup').click(function(e) {
         var overlay_id = $(e.target).parent().parent().attr('overlay-id');
         $('.overlay[overlay-id="' + overlay_id + '"]').fadeOut();
+        isBodyScrollable(true);
     });
 
     // закрыть по клику вне окна
@@ -26,6 +41,7 @@ OnDOMContentLoaded(function () {
         var popup = $('.popup');
         if (e.target != popup[0] && popup.has(e.target).length === 0){
             $('.overlay').fadeOut();
+            isBodyScrollable(true);
         }
     });
 
@@ -174,23 +190,23 @@ OnDOMContentLoaded(function() {
     });
 });
 
-function TrimHash(href) {
+function ___TrimHash(href) {
     if (isEmpty(href))
         return "";
-    var index = href.indexOf('#');
-    return index == -1 ? href : href.substr(0, index);
+    return href.sliceTo("#");
 }
 
-function GetHash(href) {
+function ___GetHash(href) {
     if (isEmpty(href))
         return "";
-    var index = href.indexOf('#');
-    return index == -1 ? "" : href.substr(index + 1);
+    return href.sliceFrom("#");
 }
 
 function TransitionTo(href) {
-    var current = TrimHash(window.location.href);
-    var new_href = TrimHash(href);
+    href = ___TransitionTo(href);
+
+    var current = ___TrimHash(window.location.href);
+    var new_href = ___TrimHash(href);
 
     if (!current.endsWith(new_href) && new_href) {
         document.body.addEventListener('transitionend', function(ee) {
@@ -198,9 +214,13 @@ function TransitionTo(href) {
                 window.location.href = href;
         });
         document.body.style.opacity = 0;
-    } else if (GetHash(window.location.href) != GetHash(href) && !isEmpty(GetHash(href))) {
+    } else if (___GetHash(window.location.href) != ___GetHash(href) && !isEmpty(___GetHash(href))) {
         window.location.href = href;
     }
+}
+
+function ___TransitionTo(href) {
+    return href.replace(/\$\{(.*?)\}/g, function(elem) { return eval(elem.slice(2, -1)); });
 }
 //#endregion
 
@@ -209,7 +229,9 @@ window.addEventListener('hashchange', ReadHash);
 
 function ReadHash() {
     const hash = URI().hash.slice(1);
-    URI().hash = "_";
+    //URI().hash = "_";
+    if (!isEmpty(hash))
+        history.pushState("", document.title, window.location.pathname + window.location.search);
 
     if (!isEmpty(hash) && hash != "_") {
         console.log('hash: ' + hash);
@@ -272,11 +294,17 @@ String.prototype.startsWith = function(str) {
 }
 
 String.prototype.sliceTo = function(str) {
-    return this.slice(0, this.indexOf(str));
+    var ind = this.indexOf(str);
+    if (ind == -1)
+        return this;
+    return this.slice(0, ind);
 }
 
 String.prototype.sliceFrom = function(str) {
-    return this.slice(this.lastIndexOf(str) + str.length);
+    var ind = this.lastIndexOf(str);
+    if (ind == -1)
+        return "";
+    return this.slice(ind + str.length);
 }
 
 Array.prototype.Any = function(expr) {
@@ -299,7 +327,7 @@ const StylesToFix = [
     "css/slider.css"
 ];
 
-const PseudoelementsToOverride = [
+const PseudoElementsToOverride = [
     ":hover"
 ];
 
@@ -325,8 +353,8 @@ function AddStyle(selector, text) {
     var style = document.createElement("style");
     var id = makeid();
     style.innerHTML = root + '.' + id + ' ' + path + ' {\r\n' + text + '\r\n}\r\n';
-    for (var i = 0; i < PseudoelementsToOverride.length; i++)
-        style.innerHTML += root + '.' + id + PseudoelementsToOverride[i] + ' ' + path + ' {\r\n' + text + '\r\n}\r\n';
+    for (var i = 0; i < PseudoElementsToOverride.length; i++)
+        style.innerHTML += root + '.' + id + PseudoElementsToOverride[i] + ' ' + path + ' {\r\n' + text + '\r\n}\r\n';
     $(document.body).prepend(style);
 
     return id;

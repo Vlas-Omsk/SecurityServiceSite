@@ -551,7 +551,7 @@ ul#menu li a:hover::after,
     justify-content: center;
 }
 
-.tiles li div {
+.tiles li a {
     max-height: 320px;
     max-width: 600px;
     margin: 7.5px;
@@ -578,7 +578,7 @@ ul#menu li a:hover::after,
     }
 }
 
-.tiles li div img {
+.tiles li a img {
     width: 100%;
     transform: scale(1.05);
     opacity: 1;
@@ -587,15 +587,15 @@ ul#menu li a:hover::after,
     transition: transform 2s cubic-bezier(.19,1,.22,1), opacity .8s cubic-bezier(.19,1,.22,1);
 }
 
-.tiles li div:hover img {
+.tiles li a:hover img {
     transform: scale(1.1);
 }
 
-.tiles li div:active img {
+.tiles li a:active img {
     transform: scale(1.05);
 }
 
-.tiles li div.hidden img {
+.tiles li a.hidden img {
     transform: scale(1.2);
     opacity: 0;
 }
