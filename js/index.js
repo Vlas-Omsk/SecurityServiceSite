@@ -53,7 +53,7 @@ OnDOMContentLoaded(function () {
 });
 
 function ___isBodyScrollable(on) {
-    document.body.style.overflow = on ? null : "hidden";
+    document.body.style.overflow = on ? "auto" : "hidden";
 }
 
 function OpenOverlay(overlay_id) {
@@ -254,7 +254,7 @@ function ReadHash() {
     const hash = URI().hash.slice(1);
     //URI().hash = "_";
     if (!isEmpty(hash))
-        history.pushState("", document.title, window.location.pathname + window.location.search);
+        history.pushState("", document.title, window.location.origin + window.location.pathname + window.location.search);
 
     if (!isEmpty(hash) && hash != "_") {
         console.log('hash: ' + hash);
