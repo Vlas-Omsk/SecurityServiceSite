@@ -16,71 +16,65 @@
         <script src="js/inject-static-elements.js"></script>
         <script src="js/index.js"></script>
 
-        
+        <style>
+            @media screen and (max-width: 1000px) {
+                .content {
+                    padding: 0 0 100px 0;
+                }
 
-
+                .content > .border_sex {
+                    padding-left: 4vw;
+                    padding-right: 4vw;
+                }
+            }
+        </style>
     </head>
-    <body>
-        <div class="border_sex">
-<div class="job_main_text">
-<h1 id="govno_contact">Уважаемые господа</h1>
-</div>
+    <body debug="true">
+        <div class="content" style="max-width: 1000px;">
+            <div class="border_sex" style="z-index: 2;">
+                <h1 style="text-decoration: underline;">Уважаемые господа</h1>
 
-<div class="job_main_text">
-<p>Группе компаний Спарта требуются кандидаты на должность охранника на различные объекты, в том числе производственные объекты нефтегазодобывающего комплекса, административно — бытовые комплексы, крупные офисные центры, промышленные объекты и базы.</p>
-</div>
-<div class="job_main_text">
-<p>Кандидатам предъявляются следующие требования: гражданство РФ, возраст от 21 до 50 лет, опыт работы в охранных структурах, рекомендации с предыдущего места работы.</p>
-</div>
-<div class="job_main_text">
-<p>Основные обязанности: осуществление контрольно — пропускного режима и контроля внутриобъектового режима, охрана общественного порядка.</p>
-</div>
-<div class="job_main_text">
-<p>Условия работы: </p>
-</div>
+                <p>Группе компаний Спарта требуются кандидаты на должность охранника на различные объекты, в том числе производственные объекты нефтегазодобывающего комплекса, административно — бытовые комплексы, крупные офисные центры, промышленные объекты и базы.</p>
+                <p>Кандидатам предъявляются следующие требования: гражданство РФ, возраст от 21 до 50 лет, опыт работы в охранных структурах, рекомендации с предыдущего места работы.</p>
+                <p>Основные обязанности: осуществление контрольно — пропускного режима и контроля внутриобъектового режима, охрана общественного порядка.</p>
+                
+                <h3>Условия работы: </h3>
+                <ul class="enum">
+                    <li>официальное трудоустройство</li>
+                    <li>заработная плата от 36 тысячи рублей</li>
+                    <li>предоставление жилья</li>
+                    <li>возможность подработки</li>
+                </ul>
+            </div>
 
-<div class="job_main_text">
-<ul>
-<li>официальное трудоустройство</li>
-<li>заработная плата от 36 тысячи рублей</li>
-<li>предоставление жилья</li>
-<li>возможность подработки</li>
-</ul>
-</div>
-</div>
+            <div class="border_sex">
+                <h2>Мы рассмотрим Ваше резюме и в случае положительного решения свяжемся с Вами</h2>
+            
+                <div class="contacts">         
+                    <form method="post" autocomplete="off" enctype="multipart/form-data">
+                        <p class="inline">
+                            <input type="text" placeholder="Фамилия, имя, отчество" required />
+                            <input type="text" placeholder="Ваш Email" required />
+                        </p>
+                        <p>
+                            <input type="text" placeholder="Наличие удоcтоверения, разряд"required/>
+                        </p>
+                        <p>
+                            <input type="text" placeholder="Гражданство РФ"required/>
+                        </p>
+                        <p>
+                            <input type="text" placeholder="Предыдущее место работы и контактный телефон непосредственного руководителя"required/>
+                        </p>
+                        <p>
+                            <input type="text" placeholder="Ваш телефон"required/>
+                        </p>
 
-<div class="job_main_text border_sex">
-<h1>Мы рассмотрим Ваше резюме и в случае положительного решения свяжемся с Вами</h1>
-</div>
-
-
-
-        
-   <div class="contacts">         
-<form method="post" autocomplete="off" enctype="multipart/form-data">
-    <p><input type="text" class="contact_input" placeholder="Фамилия, имя, отчество" required />
-      <input type="text" class="contact_input" placeholder="Ваш Email" required />
-    </p>
-<p>
-  <input type="text" class="contact_input full_input" placeholder="Наличие удоcтоверения, разряд"required/>
-</p>
-<p>
-  <input type="text" class="contact_input full_input" placeholder="Гражданство РФ"required/>
-</p>
-<p>
-  <input type="text" class="contact_input full_input" placeholder="Предыдущее место работы и контактный телефон непосредственного руководителя"required/>
-</p>
-<p>
-  <input type="text" class="contact_input full_input" placeholder="Ваш телефон"required/>
-</p>
-
-<p><button id="contact_btn" class="contact_btn">Отправить</button></p>
-</form>
-</div>
-
-        
-
-
-        <script src="contact.js"></script>
+                        <p>
+                            <button id="contact_btn">Отправить</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

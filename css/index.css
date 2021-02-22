@@ -384,6 +384,7 @@ ul#menu li a:hover::after,
 
 /*#region content*/
 .content {
+    margin: 0 auto;
     padding: 0 4vw 100px 4vw;
     box-sizing: border-box;
 }
@@ -392,6 +393,8 @@ ul#menu li a:hover::after,
     text-align: center;
     font-weight: 700;
     font-size: 4em;
+    margin: 0;
+    padding: 0.67em 2vw;
     /* font-size: 100px; */
 }
 
@@ -404,6 +407,7 @@ ul#menu li a:hover::after,
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
+    padding: 0 2vw;
 }
 
 .content h3 {
@@ -659,56 +663,68 @@ body {
 }
 /*#endregion*/
 
-/* FORM */
-.contacts{
+/*#region FORM */
+.contacts {
     display: flex;
     justify-content: center;
 }
-.contact_input{
-  resize: vertical;
-  padding:15px;
-  border-radius:15px;
-  border:0;
-  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
-  height:50px;
-  width: 160px;
+
+.contacts form p {
+    margin: 15px 0;
 }
 
-.full_input{
-    width: 90%;
-}
-
-.contact_btn{
+.contacts form p > * {
     resize: vertical;
-  padding:15px;
-  border-radius:15px;
-  border:0;
-  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
-  height:50px;
-  width: 100%;
+    padding: 15px;
+    height: 4.5em;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+.contacts form p > *:focus {
+    outline: none;
+}
 
-
-.job_main_text{
+.contacts form p.inline {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    margin: 0 -10px;
 }
 
-.job_main_text p, .job_main_text ul{
-    
-    width:50%;
+.contacts form p.inline > * {
+    margin: 0 10px;
 }
 
-.border_sex{
-
-  
-  border-radius:15px;
-  border:0;
-  box-shadow:4px 4px 10px rgba(0,0,0,0.06);
-  
+.border_sex,
+.contacts form p > *,
+#contact_btn {
+    border-radius: 15px;
+    border: 0;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.06);
+    /* box-shadow: 0 0 16px rgba(0,0,0,.1);
+    border: 0 solid #dadce0; */
+    border-width: 0 1px 1px 1px;
 }
 
-#govno_contact{
-    text-decoration: underline;
+.border_sex {
+    border-radius: 0 0 15px 15px;
+    padding-bottom: 30px;
+    margin-top: -15px;
+    padding-top: 15px;
 }
+
+#contact_btn {
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: background-color .2s;
+}
+
+#contact_btn:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+#contact_btn:active {
+    background-color: rgb(210, 210, 210);
+}
+/*#endregion*/
