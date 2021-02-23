@@ -15,6 +15,7 @@
         <script src="js/jquery.min.js"></script>
         <script src="js/inject-static-elements.js"></script>
         <script src="js/index.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <style>
             @media screen and (max-width: 1000px) {
@@ -30,6 +31,7 @@
         </style>
     </head>
     <body debug="true">
+
         <div class="content" style="max-width: 1000px;">
             <div class="border_sex" style="z-index: 2;">
                 <h1 style="text-decoration: underline;">Уважаемые господа</h1>
@@ -51,30 +53,32 @@
                 <h2>Мы рассмотрим Ваше резюме и в случае положительного решения свяжемся с Вами</h2>
             
                 <div class="contacts">         
-                    <form method="post" autocomplete="off" enctype="multipart/form-data">
+                    <form method="post" autocomplete="off">
                         <p class="inline">
-                            <input type="text" placeholder="Фамилия Имя Отчество" required />
-                            <input type="text" placeholder="Ваш Email" required />
+                            <input type="text" id="fio" placeholder="Фамилия Имя Отчество" required />
+                            <input type="text" id="mail" placeholder="Ваш Email" required />
                         </p>
                         <p>
-                            <input type="text" placeholder="Наличие удоcтоверения, разряд" required/>
+                            <input type="text" id="card" placeholder="Наличие удоcтоверения, разряд" required/>
                         </p>
                         <p>
-                            <input type="text" placeholder="Гражданство РФ" required/>
+                            <input type="text" id="country" placeholder="Гражданство РФ" required/>
                         </p>
                         <p>
-                            <input type="text" style="height: 6em;" class="multiline-paceholder" placeholder="Предыдущее место работы и контактный телефон непосредственного руководителя" required/>
+                            <input type="text" id="before_job" style="height: 6em;" class="multiline-paceholder" placeholder="Предыдущее место работы и контактный телефон непосредственного руководителя" required/>
                         </p>
                         <p>
-                            <input type="text" placeholder="Ваш телефон" required/>
+                            <input type="text" id="phone" placeholder="Ваш телефон" required/>
                         </p>
 
                         <p>
-                            <button id="contact_btn">Отправить</button>
+                            <input id="contact_btn" value="Отправить" type="button"/>
                         </p>
                     </form>
                 </div>
             </div>
         </div>
+
+        <script src="js/contacts.js"></script>
     </body>
 </html>
