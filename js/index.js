@@ -1,10 +1,10 @@
 const services = {
-    physical: ToDataURL('<h1>services.physical</h1>'),
-    remote: ToDataURL('<h1>services.remote</h1>'),
-    video: ToDataURL('<h1>services.video</h1>'),
-    cash: ToDataURL('<h1>services.cash</h1>'),
-    polygraph: ToDataURL('<h1>services.polygraph</h1>'),
-    fire: ToDataURL('<h1>services.fire</h1>')
+    physical:  'services/physical.html',
+    remote:    'services/remote.html',
+    video:     'services/video.html',
+    cash:      'services/cash.html',
+    polygraph: 'services/polygraph.html',
+    fire:      'services/fire.html'
 };
 
 function ToDataURL(html) {
@@ -337,6 +337,16 @@ Array.prototype.Any = function(expr) {
             return true;
     }
     return false;
+}
+
+Array.prototype.Where = function(expr) {
+    var result = [];
+    for (var i = 0; i < this.length; i++) {
+        var elem = this[i];
+        if (expr(elem))
+            result.push(elem);
+    }
+    return result;
 }
 //#endregion
 

@@ -387,6 +387,7 @@ ul#menu li a:hover::after,
     margin: 0 auto;
     padding: 0 4vw 100px 4vw;
     box-sizing: border-box;
+    max-width: 1600px;
 }
 
 .content h1 {
@@ -673,12 +674,31 @@ body {
     margin: 15px 0;
 }
 
+.border_sex,
+.contacts form p > *,
+#contact_btn {
+    border-radius: 15px;
+    border-width: 0;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.06);
+    /* box-shadow: 0 0 16px rgba(0,0,0,.1);
+    border: 0 solid #dadce0; */
+    /* border-width: 0 1px 1px 1px; */
+}
+
 .contacts form p > * {
     resize: vertical;
     padding: 10px;
     height: 4.5em;
     width: 100%;
+    border-color: transparent;
+    border-width: 1px;
     box-sizing: border-box;
+
+    transition: border-color .3s, border-width .2s;
+}
+
+.contacts form p > input[type=text].invalid {
+    border-color: red;
 }
 
 .contacts form p > *:focus {
@@ -693,17 +713,6 @@ body {
 
 .contacts form p.inline > * {
     margin: 0 10px;
-}
-
-.border_sex,
-.contacts form p > *,
-#contact_btn {
-    border-radius: 15px;
-    border: 0;
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.06);
-    /* box-shadow: 0 0 16px rgba(0,0,0,.1);
-    border: 0 solid #dadce0; */
-    border-width: 0 1px 1px 1px;
 }
 
 .border_sex {

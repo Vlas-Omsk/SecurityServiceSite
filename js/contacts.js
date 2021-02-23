@@ -1,35 +1,69 @@
-jQuery(function(){
-
-
-$("#contact_btn").on("click",function(){
-var fio = $("#fio").val();
-var mail = $("#mail").val();
-var card = $("#card").val();
-var country = $("#country").val();
-var before_job = $("#before_job").val();
-var phone = $("#phone").val();
-
 function funcBefore(){
 
 }
-function funcSuccess(data){
-	swal("Заявка отправлена!", "За тобой уже выехали", "success", {
-  button: "Aww yiss!",
-});
+
+function funcSuccess(data) {
+    swal("Заявка отправлена!", "", "success", {
+        button: "Готово!",
+    });
 }
 
-if($("#fio").val().length < 4 || $("#mail").val().length < 4 || $("#card").val().length < 4 || $("#country").val().length < 4 || $("#before_job").val().length < 4 || $("#phone").val().length < 4){
-swal("Заявка не отправлена!", "Пожалуйста, заполните все поля правильно");
-}
-else{
-$.ajax({
-url: "http://isilkuladmin.ru/vagine_system.php",
-type: "post",
-data: ({fio: fio, mail: mail, card: card, country: country, before_job: before_job, phone: phone}),
-dataType: "html",
-beforeSend: funcBefore,
-success: funcSuccess
-});
-}
-});
+//#region Validation
+String.prototype.IsValidEmail = function() {
+    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this);
+};
+
+String.prototype.IsValidPhone = function() {
+    ///^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
+    return /^[+]*[\s?0-9]{0,2}[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g.test(this) && this.length > 4;
+};
+
+String.prototype.IsValidFIO = function() {
+    return this.split(' ').Where(function(elem) { return !isEmpty(elem) }).length >= 3;
+};
+
+String.prototype.IsValid = function() {
+    return !isEmpty(this) && this.length >= 3;
+};
+//#endregion
+
+OnDOMContentLoaded(function() {
+    var fio =        $("#fio"),
+        mail =       $("#mail"),
+        card =       $("#card"),
+        country =    $("#country"),
+        before_job = $("#before_job"),
+        phone =      $("#phone");
+    
+    $(".contacts form p input[type=text]").each(function (_, elem) {
+        elem = $(elem);
+        elem.on("change paste keyup", function() { elem.removeClass("invalid"); })
+    });
+
+    $("#contact_btn").on("click", function() {
+        var errors = false;
+        if (!mail.val().IsValidEmail())
+            errors = !!mail.addClass("invalid");
+        if (!fio.val().IsValidFIO())
+            errors = !!fio.addClass("invalid");
+        if (!phone.val().IsValidPhone())
+            errors = !!phone.addClass("invalid");
+        if (!card.val().IsValid())
+            errors = !!card.addClass("invalid");
+        if (!country.val().IsValid())
+            errors = !!country.addClass("invalid");
+        if (!before_job.val().IsValid())
+            errors = !!before_job.addClass("invalid");
+        if (errors)
+            return; //swal("Заявка не отправлена!", "Пожалуйста, заполните все поля правильно");
+
+        $.ajax({
+            url: "http://isilkuladmin.ru/vagine_system.php",
+            type: "post",
+            data: ({ fio: fio.val(), mail: mail.val(), card: card.val(), country: country.val(), before_job: before_job.val(), phone: phone.val() }),
+            dataType: "html",
+            beforeSend: funcBefore,
+            success: funcSuccess
+        });
+    });
 });
