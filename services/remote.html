@@ -8,17 +8,105 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="media/favicon.png" type="image-x/png"/>
+        <link rel="icon" href="/media/favicon.png" type="image-x/png"/>
 
-        <link href="css/index.css" rel="stylesheet"/>
+        <link href="/css/index.css" rel="stylesheet"/>
         
-        <script src="js/jquery.min.js"></script>
-        <script src="js/inject-static-elements.js"></script>
-        <script src="js/index.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/inject-static-elements.js"></script>
+        <script src="/js/index.js"></script>
+
+        <style>
+            .content .container img {
+                box-shadow: none;
+                filter: url(#drop-shadow);
+                -webkit-filter: drop-shadow(4px 4px 10px rgba(0,0,0,.3));
+                -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=4, OffY=4, Color='#777')";
+                filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=4, OffY=4, Color='#777')";
+            }
+
+            a[href=https\:\/\/www\.cnord\.ru\/] {
+                color: grey;
+                text-decoration: none;
+            }
+
+            a[href=https\:\/\/www\.cnord\.ru\/]:hover {
+                color: #00cf7f;
+            }
+        </style>
     </head>
     <body>
         <div class="content">
-            
+            <div class="padding">
+                <h1><i>Пультовая</i> охрана</h1>
+
+                <div class="container">
+                    <div class="left-image">
+                        <img src="/media/services/1-6-PULT.png"/>
+                    </div>
+                    <div class="right-description">
+                        <p>На сегодняшний день предприятие является одним из ведущих и динамично развивающихся охранных предприятий ХМАО-Югры в сфере оказания услуг охраны посредством ПЦН.</p>
+                        <h3>Мы имеем собственные группы быстрого реагирования в следующих городах:</h3>
+                        <ul class="enum">
+                            <li>Сургут</li>
+                            <li>Нефтеюганск</li>
+                            <li>Лянтор</li>
+                            <li>Пыть-Ях</li>
+                            <li>Когалым</li>
+                            <li>п. Фёдоровский</li>
+                            <li>пгт Пойковский</li>
+                            <li><i>Планируется г. Н-Вартовск и г. Ноябрьск.</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <h2>В наши планы входит дальнейшее расширение географии оказания услуг.</h2>
+            </div>
+
+            <div class="wave-up">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path class="wave1"></path>
+                </svg>
+            </div>
+            <div class="between-waves">
+                <div class="padding">
+                    <h3>В настоящее время наше предприятие использует в работе систему пультовой охраны GSM компании «<a transition href="https://www.cnord.ru/">C.Nord</a>».</h3>
+                    <p>Комания «<a transition href="https://www.cnord.ru/">C.Nord</a>» является победителем в международной выставке технических средств охраны и оборудования, для обеспечения безопасности и противопожарной защиты прошедшей в г. Москва 23.03.2018 г.</p>
+                    <p>Охранная система «<a transition href="https://www.cnord.ru/">C.Nord</a>» уникальна тем, что она использует полную двухстороннюю связь между охраняемым объектом и лицом использующим приложение «MyAlarm», которое в свою очередь отправляет пуш-уведомления на смартфон (ноутбук) владельца, оповещая обо всём происходящем на охраняемом объекте. Пользователь будет получать пуш-уведомления на свой смартфон (ноутбук) до тех пор, пока не отреагирует на тревогу.</p>
+
+                    <h3>Система «<a transition href="https://www.cnord.ru/">C.Nord</a>» отправляет пуш-уведомления на приложение «MyAlarm» пользователю смартфона (ноутбука) сообщая обо всех происшествиях посредством различных датчиков таких как:</h3>
+                    <ul class="enum">
+                        <li>Датчик открытия дверей</li>
+                        <li>Датчик разбитие окна</li>
+                        <li>Датчик движения</li>
+                        <li>Датчик задымления</li>
+                        <li>Датчик протечки воды</li>
+                        <li>Датчик температуры</li>
+                        <li>Датчик утечки газа</li>
+                    </ul>
+
+                    <p class="swappadding">Все датчики системы «<a transition href="https://www.cnord.ru/">C.Nord</a>» оборудованы двумя элементами питания основным и резервным. Когда истекает срок службы основного, на резервном питании датчики способны проработать до 2-ух месяцев.</p>
+                </div>
+            </div>
+            <div class="wave-down">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path class="wave1"></path>
+                </svg>
+            </div>
+
+            <h2><i>Пультовая</i> охрана Группы компаний <i>«Спарта»</i> — безопасность Ваших объектов в Сургуте</h2>
         </div>
+
+        <svg height="0" xmlns="http://www.w3.org/2000/svg">
+            <filter id="drop-shadow">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                <feOffset dx="4" dy="4" result="offsetblur"/>
+                <feFlood flood-color="rgba(0,0,0,0.3)"/>
+                <feComposite in2="offsetblur" operator="in"/>
+                <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </svg>
     </body>
 </html>

@@ -64,31 +64,31 @@ const menu_json = [
             { 
                 'tag': 'li', 
                 'content': [ 
-                    { 'tag': 'a', 'content': 'Наши услуги', 'attrs': { 'transition': '', 'href': 'services.html'/*'index.html#scrollto_services'*/ } }
+                    { 'tag': 'a', 'content': 'Наши услуги', 'attrs': { 'transition': '', 'href': '/services.html'/*'/index.html#scrollto_services'*/ } }
                 ] 
             },
             { 
                 'tag': 'li', 
                 'content': [ 
-                    { 'tag': 'a', 'content': 'Наши документы', 'attrs': { 'transition': '', 'href': 'index.html#scrollto_documents' } } 
+                    { 'tag': 'a', 'content': 'Наши документы', 'attrs': { 'transition': '', 'href': '/index.html#scrollto_documents' } } 
                 ] 
             },
             { 
                 'tag': 'li', 
                 'content': [ 
-                    { 'tag': 'a', 'content': 'Цены на услуги', 'attrs': { 'transition': '', 'href': 'price.html' } } 
+                    { 'tag': 'a', 'content': 'Цены на услуги', 'attrs': { 'transition': '', 'href': '/price.html' } } 
                 ] 
             },
             { 
                 'tag': 'li', 
                 'content': [ 
-                    { 'tag': 'a', 'content': 'Отзывы', 'attrs': { 'transition': '', 'href': 'feedback.html' } } 
+                    { 'tag': 'a', 'content': 'Отзывы', 'attrs': { 'transition': '', 'href': '/feedback.html' } } 
                 ] 
             },
             { 
                 'tag': 'li', 
                 'content': [ 
-                    { 'tag': 'a', 'content': 'Вакансия', 'attrs': { 'transition': '', 'href': 'job.html' } } 
+                    { 'tag': 'a', 'content': 'Вакансия', 'attrs': { 'transition': '', 'href': '/job.html' } } 
                 ] 
             },
             { 
@@ -209,14 +209,14 @@ const preloader = [
                 'attrs': {
                     'transition': '',
                     'id': 'helmet',
-                    'href': 'index.html'
+                    'href': '/index.html'
                 },
                 'content': [
                     {
                         'tag': 'img',
                         'attrs': {
                             'style': 'height: 100%;',
-                            'src': 'media/helmet.svg'
+                            'src': '/media/helmet.svg'
                         }
                     }
                 ]
@@ -245,7 +245,7 @@ BeforeInvokeDOMContentLoaded = function () {
                 'tag': 'link',
                 'attrs': {
                     'rel': 'stylesheet',
-                    'href': 'css\\ie-compatible.css'
+                    'href': '/css/ie-compatible.css'
                 }
             }
         ]));
@@ -260,7 +260,12 @@ BeforeInvokeDOMContentLoaded = function () {
         switch (elem.trim()) {
             case 'header': body.prepend(JsonToDOM(header)); break;
             case 'popups': body.append(JsonToDOM(popups)); break;
-            case 'menu': $("header").append(JsonToDOM(menu_json)); break;
+            case 'menu': 
+                var selected_permanently = body.attr("selected-permanently");
+                if (!isEmpty(selected_permanently))
+                    menu_json[0].content[selected_permanently].attrs = { "class": "selected-permanently" };
+                $("header").append(JsonToDOM(menu_json));
+                break;
         }
     });
 
@@ -278,13 +283,12 @@ function InitPreloaderAnimation() {
         RunPreloaderAnimation();
         return;
     }
-    
 
     var preloader_copy = preloader;
     preloader_copy[0] = {
         'tag': 'link',
         'attrs': {
-            'href': 'css/preloader-static.css',
+            'href': '/css/preloader-static.css',
             'rel': 'stylesheet'
         }
     };

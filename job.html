@@ -20,62 +20,63 @@
 
         <style>
             @media screen and (max-width: 1000px) {
-                .content {
+                .content .padding {
                     padding: 0 0 100px 0;
                 }
 
-                .content > .border_sex {
+                .content .padding > .border_sex {
                     padding-left: 4vw;
                     padding-right: 4vw;
                 }
             }
         </style>
     </head>
-    <body debug="true">
-
-        <div class="content" style="max-width: 1000px;">
-            <div class="border_sex" style="z-index: 2;">
-                <h1 style="text-decoration: underline;">Уважаемые господа</h1>
-
-                <p>Группе компаний Спарта требуются кандидаты на должность охранника на различные объекты, в том числе производственные объекты нефтегазодобывающего комплекса, административно — бытовые комплексы, крупные офисные центры, промышленные объекты и базы.</p>
-                <p>Кандидатам предъявляются следующие требования: гражданство РФ, возраст от 21 до 50 лет, опыт работы в охранных структурах, рекомендации с предыдущего места работы.</p>
-                <p>Основные обязанности: осуществление контрольно — пропускного режима и контроля внутриобъектового режима, охрана общественного порядка.</p>
+    <body selected-permanently="4" debug="true">
+        <div class="content">
+            <div class="padding" style="max-width: 1000px; display: flex; flex-direction: column-reverse;">
+                <div class="border_sex">
+                    <h2>Мы рассмотрим Ваше резюме и в случае положительного решения свяжемся с Вами</h2>
                 
-                <h3>Условия работы: </h3>
-                <ul class="enum">
-                    <li>официальное трудоустройство</li>
-                    <li>заработная плата от 36 тысячи рублей</li>
-                    <li>предоставление жилья</li>
-                    <li>возможность подработки</li>
-                </ul>
-            </div>
+                    <div class="contacts">         
+                        <form method="post" autocomplete="off">
+                            <p class="inline">
+                                <input type="text" id="fio" placeholder="Фамилия Имя Отчество" required />
+                                <input type="text" id="mail" placeholder="Ваш Email" required />
+                            </p>
+                            <p>
+                                <input type="text" id="card" placeholder="Наличие удоcтоверения, разряд" required/>
+                            </p>
+                            <p>
+                                <input type="text" id="country" placeholder="Гражданство РФ" required/>
+                            </p>
+                            <p>
+                                <input type="text" id="before_job" style="height: 6em;" class="multiline-paceholder" placeholder="Предыдущее место работы и контактный телефон непосредственного руководителя" required/>
+                            </p>
+                            <p>
+                                <input type="text" id="phone" placeholder="Ваш телефон" required/>
+                            </p>
 
-            <div class="border_sex">
-                <h2>Мы рассмотрим Ваше резюме и в случае положительного решения свяжемся с Вами</h2>
-            
-                <div class="contacts">         
-                    <form method="post" autocomplete="off">
-                        <p class="inline">
-                            <input type="text" id="fio" placeholder="Фамилия Имя Отчество" required />
-                            <input type="text" id="mail" placeholder="Ваш Email" required />
-                        </p>
-                        <p>
-                            <input type="text" id="card" placeholder="Наличие удоcтоверения, разряд" required/>
-                        </p>
-                        <p>
-                            <input type="text" id="country" placeholder="Гражданство РФ" required/>
-                        </p>
-                        <p>
-                            <input type="text" id="before_job" style="height: 6em;" class="multiline-paceholder" placeholder="Предыдущее место работы и контактный телефон непосредственного руководителя" required/>
-                        </p>
-                        <p>
-                            <input type="text" id="phone" placeholder="Ваш телефон" required/>
-                        </p>
+                            <p>
+                                <input id="contact_btn" value="Отправить" type="button"/>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="border_sex">
+                    <h1 style="text-decoration: underline;">Уважаемые господа</h1>
 
-                        <p>
-                            <input id="contact_btn" value="Отправить" type="button"/>
-                        </p>
-                    </form>
+                    <p>Группе компаний Спарта требуются кандидаты на должность охранника на различные объекты, в том числе производственные объекты нефтегазодобывающего комплекса, административно — бытовые комплексы, крупные офисные центры, промышленные объекты и базы.</p>
+                    <p>Кандидатам предъявляются следующие требования: гражданство РФ, возраст от 21 до 50 лет, опыт работы в охранных структурах, рекомендации с предыдущего места работы.</p>
+                    <p>Основные обязанности: осуществление контрольно — пропускного режима и контроля внутриобъектового режима, охрана общественного порядка.</p>
+                    
+                    <h3>Условия работы: </h3>
+                    <ul class="enum">
+                        <li>официальное трудоустройство</li>
+                        <li>заработная плата от 36 тысячи рублей</li>
+                        <li>предоставление жилья</li>
+                        <li>возможность подработки</li>
+                    </ul>
                 </div>
             </div>
         </div>
