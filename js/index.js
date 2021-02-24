@@ -160,10 +160,11 @@ OnDOMContentLoaded(function() {
     );
 });
 
-function el_VisibleChanged(el, attribute) {
-    var attr = el.getAttribute(attribute);
-    if (!isEmpty(attr)) {
-        var split = attr.split(";");
+function el_VisibleChanged(el, attribute, rule) {
+    if (!isEmpty(attribute))
+        rule = el.getAttribute(attribute);
+    if (!isEmpty(rule)) {
+        var split = rule.split(";");
         var Timeout = -1;    
         split.forEach(function(elem) {
             elem = elem.trim();
@@ -343,8 +344,17 @@ Array.prototype.Where = function(expr) {
     var result = [];
     for (var i = 0; i < this.length; i++) {
         var elem = this[i];
-        if (expr(elem))
+        if (expr(elem, i, this.length))
             result.push(elem);
+    }
+    return result;
+}
+
+Array.prototype.Select = function(expr) {
+    var result = [];
+    for (var i = 0; i < this.length; i++) {
+        var elem = this[i];
+        result.push(expr(elem, i, this.length));
     }
     return result;
 }
@@ -433,4 +443,18 @@ function FixIEActive() {
         }
     }
 }
+//#endregion
+
+//#region SlideUpH1
+OnDOMContentLoaded(function() {
+    var elements = $(".content h1:not([static])");
+    elements.each(function(i, item) {
+        item = $(item);
+        item.html('<span>' + item.html() + '</span>');
+    });
+    onVisibleSpaceListener(
+        elements.toArray(), 
+        function(el) { el_VisibleChanged(el, null, "~400; +visible") }
+    );
+});
 //#endregion

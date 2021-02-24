@@ -397,12 +397,28 @@ ul#menu li.selected-permanently a::after {
 }
 
 .content h1 {
+    margin: 0.67em 0;
+    padding: 0 2vw;
+    /* font-size: 100px; */
     text-align: center;
     font-weight: 700;
     font-size: 4em;
-    margin: 0;
-    padding: 0.67em 2vw;
-    /* font-size: 100px; */
+}
+
+.content h1:not([static]) {
+    position: relative;
+    overflow-y: hidden;
+}
+
+.content h1:not([static]) span {
+    display: block;
+    transform: translateY(100%);
+
+    transition: transform .8s cubic-bezier(.165,.84,.44,1);
+}
+
+.content h1:not([static]).visible span {
+    transform: none;
 }
 
 .content h2 {
@@ -467,7 +483,7 @@ ul#menu li.selected-permanently a::after {
     /* transition: opacity .6s .1s,transform .6s ease,-webkit-transform .6s ease; */
     grid-template-columns: repeat(12,1fr);
     gap: 0 20px;
-    padding: 20px 0;
+    margin: 20px 0;
 }
 
 .content .container .left-image,
@@ -536,6 +552,7 @@ ul#menu li.selected-permanently a::after {
     /* margin: 0 -4vw 0 -4vw; */
     /* padding: 0 4vw 0 4vw; */
     background-color: #f6f6f6;
+    overflow: auto;
 }
 
 .content .wave1 {
@@ -701,6 +718,7 @@ ul#menu li.selected-permanently a::after {
 }
 
 .tiles li a img {
+    display: block;
     width: 100%;
     transform: scale(1.05);
     opacity: 1;
@@ -742,6 +760,7 @@ ul#menu li.selected-permanently a::after {
 
 .gridline li img {
     height: 200px;
+    display: block;
 }
 /*#endregion*/
 
