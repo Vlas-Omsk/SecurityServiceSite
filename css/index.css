@@ -7,6 +7,7 @@ body{
 *{
     font-family: 'Raleway', sans-serif;
     word-wrap: break-word;
+    text-rendering: optimizeLegibility;
 }
 
 /*
@@ -149,33 +150,53 @@ ul#menu li.selected-permanently a::after {
 }
 
 .overlay {
+    display: block;
     position: fixed;
     width: 100%;
     height: 100vh;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, .8);
-    display: none;
     z-index: 9999;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+
+    transition: opacity .1s ease-in;
+}
+
+.overlay.visible {
+    pointer-events: auto;
+    opacity: 1;
+
+    transition: opacity .2s ease-in;
 }
 
 .popup {
-    position: absolute;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 400px;
-    left: 50%;
-    top: 50%;
     padding: 40px;
-    transform: translate(-50%, -50%);
     box-sizing: border-box;
     background-color: #1b1f22;
     color: #fff;
+    transform: scale(0.7, 0.7);
+
+    transition: transform .25s cubic-bezier(.48,1.93,1,.68);
 }
 
-.popup div:not([class]) {
+.overlay.visible .popup {
+    transform: none;
+}
+
+.popup div.popup-content {
+    position: relative;
     height: auto;
     overflow-x: hidden;
     overflow-y: auto;
@@ -394,6 +415,7 @@ ul#menu li.selected-permanently a::after {
     padding: 0 4vw 0 4vw;
     max-width: 1600px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .content h1 {
@@ -475,6 +497,20 @@ ul#menu li.selected-permanently a::after {
     border-style: solid;
 }
 
+.content .image img,
+.content .container img {
+    box-shadow: 4px 4px 10px rgba(0,0,0,.3);
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+}
+
+.content .image {
+    padding: 0 10vw;
+    box-sizing: border-box;
+}
+/*#endregion*/
+
 /*#region container*/
 .content .container {
     box-sizing: border-box;
@@ -498,10 +534,6 @@ ul#menu li.selected-permanently a::after {
 }
 
 .content .container img {
-    display: block;
-    width: 100%;
-    box-shadow: 4px 4px 10px rgba(0,0,0,.3);
-    border-radius: 5px;
     margin: 20px 0;
 }
 
@@ -573,8 +605,6 @@ ul#menu li.selected-permanently a::after {
         d: path("M842.322034,38.0019829 C686.954825,71.1183168 623.386282,53.08497 467.492582,19.4422816 C313.032879,-13.8909426 84.0992497,8.02840272 0,44.7243294 L0,150.727527 L1920,150.727527 L1920,76.8685643 C1512.23604,-35.3595639 1568.70222,67.4289432 1278.62078,31.7541069 C988.539347,-3.92072949 997.689243,4.88564905 842.322034,38.0019829 Z")
     }
 }
-/*#endregion*/
-
 /*#endregion*/
 
 /*#region grid*/
@@ -754,7 +784,7 @@ ul#menu li.selected-permanently a::after {
 
 .gridline li {
     margin: 4px;
-    box-shadow: 4px 4px 10px rgba(0,0,0,.4);
+    box-shadow: 4px 4px 10px rgba(0,0,0,.3);
     display: inline-block;
 }
 

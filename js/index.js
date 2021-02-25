@@ -57,18 +57,59 @@ function ___isBodyScrollable(on) {
 }
 
 function OpenOverlay(overlay_id) {
-    $('.overlay[overlay-id="' + overlay_id + '"]').fadeIn();
-    $('.overlay[overlay-id="' + overlay_id + '"]').addClass('disabled');
+    var overlay = $('.overlay[overlay-id="' + overlay_id + '"]');
+    overlay.find(".popup div.popup-content").css({ top: '0' });
+    overlay.addClass("visible");
     ___isBodyScrollable(false);
 }
 
 function CloseOverlay(overlay_id) {
     if (isEmpty(overlay_id))
-        $('.overlay').fadeOut();
+        $('.overlay.visible').removeClass("visible");
     else
-        $('.overlay[overlay-id="' + overlay_id + '"]').fadeOut();
+        $('.overlay[overlay-id="' + overlay_id + '"]').removeClass("visible");
     ___isBodyScrollable(true);
 }
+//#endregion
+
+//#region SwipePopup
+var initialPoint;
+var finalPoint;
+
+document.addEventListener('touchstart', function(event) {
+    event.stopPropagation();
+    var popup_content = $('.overlay.visible .popup .popup-content')[0];
+    if (popup_content != undefined && popup_content.scrollTop == 0)
+        initialPoint=event.changedTouches[0];
+    else
+        initialPoint = null;
+}, false);
+
+document.addEventListener("touchmove", function(event) {
+    event.stopPropagation();
+    var popup = $('.overlay.visible .popup');
+    if ($(event.target).closest(popup).length && initialPoint != null) {
+        var currentPoint=event.changedTouches[0];
+        var y = initialPoint.screenY - currentPoint.screenY;
+        var popup = $('.overlay.visible .popup');
+        if ($(event.target).closest(popup).length)
+        if (y < -20)
+            $(".overlay .popup div.popup-content").css({ top: Math.abs(y) + 'px' });
+    }
+}, false);
+
+document.addEventListener('touchend', function(event) {
+    event.stopPropagation();
+    var popup = $('.overlay.visible .popup');
+    if ($(event.target).closest(popup).length && initialPoint != null) {
+        finalPoint=event.changedTouches[0];
+        var y = initialPoint.screenY - finalPoint.screenY;
+        if (y < -200)
+            CloseOverlay();
+        else
+            popup.children('.popup-content').animate({ 'top': '0' }, 200);
+    }
+}, false);
 //#endregion
 
 //#region OnScroll
@@ -234,7 +275,7 @@ function ___TransitionTo(href, withtransition) {
         ___OpenDataURL(href);
     else if (withtransition) {
         document.body.addEventListener('transitionend', function(ee) {
-            if (ee.target == document.body)
+            if (ee.target == document.body && document.body.style.opacity == 0 && ee.propertyName == "opacity")
                 window.location.href = href;
         });
         document.body.style.opacity = 0;

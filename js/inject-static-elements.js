@@ -134,6 +134,9 @@ const popups = [
                 'content': [
                     {
                         'tag': 'div',
+                        'attrs': {
+                            'class': 'popup-content'
+                        },
                         'content': [
                             { 'tag': 'h2', 'content': 'Мы всегда на связи!' },
                             {
@@ -280,7 +283,10 @@ function InitPreloaderAnimation() {
     if (isEmpty(document.referrer) || isEmpty(URI().host) || document.referrer.indexOf(URI().host) == -1) {
         $(JsonToDOM(preloader)).insertAfter("header");
 
-        RunPreloaderAnimation();
+        document.body.addEventListener('transitionend', function(ee) {
+            if (ee.target == document.body && document.body.style.opacity == 1 && ee.propertyName == "opacity")
+                RunPreloaderAnimation();
+        });
         return;
     }
 

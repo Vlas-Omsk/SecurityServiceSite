@@ -4,7 +4,7 @@
         <title>Инкассация</title>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
         <meta http-equiv="Content-Language" content="ru"/>
-        <meta name="pragma" content="no-cashe"/>
+        <meta name="pragma" content="no-cache"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,10 +15,81 @@
         <script src="/js/jquery.min.js"></script>
         <script src="/js/inject-static-elements.js"></script>
         <script src="/js/index.js"></script>
+
+        <style>
+            .content .padding img {
+                box-shadow: none;
+                filter: url(#drop-shadow);
+                -webkit-filter: drop-shadow(4px 4px 10px rgba(0,0,0,.3));
+                -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=4, OffY=4, Color='#777')";
+                filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=4, OffY=4, Color='#777')";
+            }
+        </style>
     </head>
     <body>
         <div class="content">
-            
+            <div class="padding">
+                <h1>Инкассация</h1>
+
+                <div class="container">
+                    <div class="left-description">
+                        <p>Инкассация — ещё одна важная по своей значимости услуга обеспечения мер безопасности, предлагаемая Группой компаний ЧОП «Спарта» своим клиентам.</p>
+                        <h3>Инкассация бывает следующих видов:</h3>
+                        <ul class="enum">
+                            <li>Транспортировка материальных ценностей на автомобиле клиента с применением вооруженного сопровождения</li>
+                            <li>Транспортировка материальных ценностей, денежных масс на бронированном автомобиле нашей компании</li>
+                            <li>Транспортировка указанных грузов на нашем бронированном автомобиле с добавлением бронированного автомобиля или автомобилей сопровождения, как усиление мер безопасности</li>
+                        </ul>
+                    </div>
+                    <div class="right-image">
+                        <img src="/media/services/1-6-INKASS-meme.png"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wave-up">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path class="wave1"></path>
+                </svg>
+            </div>
+            <div class="between-waves">
+                <div class="padding">
+                    <h3>Причины, по которым за услугой инкассации Вам следует обращаться в охранные предприятия Группы компаний ЧОП «Спарта» следующие —</h3>
+                    <div class="image">
+                        <img src="/media/services/2-4-INKAS.png"/>
+                    </div>
+                    <ul class="enum">
+                        <li>Имеется собственный автопарк бронированных автомобилей. Наши автомобили специально предназначены для перевозки ценных бумаг, ювелирных изделий, предметов антиквариата, денежных масс. Внутри автомобили оснащены сейфом, что также является эффективной мерой защиты</li>
+                        <li>В группу сопровождения бронированного автомобиля входят вооруженные бойцы. Высокий уровень профессиональной подготовки личного состава обусловлен жесткими требованиями при выборе персонала. Все сотрудники регулярно сдают экзамены по стрельбе, технике владения приемами обороны. Идя  навстречу пожеланиям Заказчика бойцы могут быть в «гражданском»</li>
+                        <li>При поступлении заявки на инкассацию специалисты на месте разрабатывают несколько оптимально безопасных маршрутов, а также варианты действий в случае попытки нападения</li>
+                        <li>Cтоимость наших услуг в сфере обеспечения безопасности весьма демократична, в чем Вы можете легко убедиться, связавшись с диспетчерской службой Группы компаний ЧОП «Спарта» по многоканальному телефону</li>
+                    </ul>
+                    <div style="display: flex; justify-content: center;">
+                        <a class="js-button header_menu_a black_underline" overlay-id="campaign" style="font-size: 18px; color: black;">Контакты</a>
+                    </div>
+                </div>
+            </div>
+            <div class="wave-down">
+                <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+                    <path class="wave1"></path>
+                </svg>
+            </div>
+
+            <h2>Доверьте безопасность Ваших ценных грузов профессионалам группы компаний Спарта — теперь мы гарант Вашей безопасности!</h2>
+            <h2>Группа компаний Спарта десять лет на страже Вашей безопасности!</h2>
         </div>
+
+        <svg height="0" xmlns="http://www.w3.org/2000/svg">
+            <filter id="drop-shadow">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+                <feOffset dx="4" dy="4" result="offsetblur"/>
+                <feFlood flood-color="rgba(0,0,0,0.3)"/>
+                <feComposite in2="offsetblur" operator="in"/>
+                <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </svg>
     </body>
 </html>
