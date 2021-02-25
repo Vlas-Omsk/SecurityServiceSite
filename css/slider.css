@@ -35,6 +35,10 @@
     transition: opacity .5s, background-position-x 1s ease;
 }
 
+.slider div[slide].contain {
+    background-size: contain;
+}
+
 .slider div[slide]:not([active]) {
     opacity: 0;
     background-position-x: 20%;

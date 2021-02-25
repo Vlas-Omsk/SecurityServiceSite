@@ -1,14 +1,11 @@
 /*#region logo-box*/
+div.logo {
+    z-index: 9997;
+}
+
 div.logo div#line {
     width: 100%;
     transition: none;
-    will-change: auto;
-}
-
-#plug {
-    opacity: 0;
-    transition: none;
-    display: none;
     will-change: auto;
 }
 

@@ -4,13 +4,12 @@ function funcBefore(){
 
 function funcSuccess(data) {
     if(data == "success"){  
-    swal("Заявка отправлена!", "", "success", {
-        button: "Готово!",
-    });
-}
-else{
-    swal("Ошибка. Заявка не отправлена!");
-}
+        swal("Заявка отправлена!", "", "success", {
+            button: "Готово!",
+        });
+    } else {
+        swal("Ошибка. Заявка не отправлена!");
+    }
 }
 
 //#region Validation

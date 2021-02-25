@@ -7,10 +7,6 @@ const services = {
     fire:      'services/fire.html'
 };
 
-function ToDataURL(html) {
-    return "data:text/html;charset=utf-8," + encodeURI(html);
-}
-
 window.onload = function() {
     document.body.style.opacity = 1;
     window.onscroll();
@@ -37,9 +33,8 @@ OnDOMContentLoaded(function () {
     //   #FIXME
     $(document).mouseup(function (e) { 
         var popup = $('.popup');
-        if (e.target != popup[0] && popup.has(e.target).length === 0){
+        if (e.target != popup[0] && popup.has(e.target).length === 0)
             CloseOverlay();
-        }
     });
 
     $(".phone_call").on("click",function(){
@@ -54,21 +49,25 @@ OnDOMContentLoaded(function () {
 
 function ___isBodyScrollable(on) {
     document.body.style.overflow = on ? "auto" : "hidden";
+    // LockScrolling(!on, 'Overlay')
 }
 
 function OpenOverlay(overlay_id) {
     var overlay = $('.overlay[overlay-id="' + overlay_id + '"]');
     overlay.find(".popup div.popup-content").css({ top: '0' });
     overlay.addClass("visible");
-    ___isBodyScrollable(false);
+    if (overlay.length != 0)
+        ___isBodyScrollable(false);
 }
 
 function CloseOverlay(overlay_id) {
+    var elements;
     if (isEmpty(overlay_id))
-        $('.overlay.visible').removeClass("visible");
+        elements = $('.overlay.visible').removeClass("visible");
     else
-        $('.overlay[overlay-id="' + overlay_id + '"]').removeClass("visible");
-    ___isBodyScrollable(true);
+        elements = $('.overlay[overlay-id="' + overlay_id + '"]').removeClass("visible");
+    if (elements.length != 0)
+        ___isBodyScrollable(true);
 }
 //#endregion
 
@@ -79,7 +78,7 @@ var finalPoint;
 document.addEventListener('touchstart', function(event) {
     event.stopPropagation();
     var popup_content = $('.overlay.visible .popup .popup-content')[0];
-    if (popup_content != undefined && popup_content.scrollTop == 0)
+    if (popup_content != undefined && popup_content.scrollTop == 0 && !$(event.target).closest("#map_gandonchir").length)
         initialPoint=event.changedTouches[0];
     else
         initialPoint = null;
@@ -104,10 +103,11 @@ document.addEventListener('touchend', function(event) {
     if ($(event.target).closest(popup).length && initialPoint != null) {
         finalPoint=event.changedTouches[0];
         var y = initialPoint.screenY - finalPoint.screenY;
-        if (y < -200)
+        if (y < -200) {
             CloseOverlay();
-        else
+        } else {
             popup.children('.popup-content').animate({ 'top': '0' }, 200);
+        }
     }
 }, false);
 //#endregion
@@ -296,7 +296,7 @@ function ReadHash() {
     const hash = URI().hash.slice(1);
     //URI().hash = "_";
     if (!isEmpty(hash))
-        history.pushState("", document.title, window.location.origin + window.location.pathname + window.location.search);
+        history.replaceState("", document.title, window.location.origin + window.location.pathname + window.location.search);
 
     if (!isEmpty(hash) && hash != "_") {
         console.log('hash: ' + hash);

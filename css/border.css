@@ -1,0 +1,29 @@
+.border_sex,
+.contacts form p > *,
+#contact_btn {
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.06);
+    /* box-shadow: 0 0 16px rgba(0,0,0,.1);
+    border: 0 solid #dadce0; */
+    /* border-width: 0 1px 1px 1px; */
+}
+
+.border_sex {
+    border-radius: 0 0 15px 15px;
+    padding-bottom: 30px;
+    margin-top: -15px;
+    padding-top: 15px;
+    background-color: white;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .content .padding {
+        padding: 0 0 10px 0;
+    }
+
+    .content .padding > .border_sex {
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
+}

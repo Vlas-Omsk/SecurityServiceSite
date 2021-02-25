@@ -38,19 +38,35 @@ window.onscroll = function() {
 function RemoveOnScroll(elem) {
     if (elem.constructor == String) {
         for (var i = 0; i < OnScrollListeners.length; i++)
-            if (OnScrollListeners[i].namespace == elem)
+            if (OnScrollListeners[i] && OnScrollListeners[i].namespace == elem)
                 delete OnScrollListeners[i];
     } else if (elem.constructor == Number) {
         delete OnScrollListeners[elem];
     } else {
         for (var i = 0; i < OnScrollListeners.length; i++)
-            if (OnScrollListeners[i] == elem)
+            if (OnScrollListeners[i] && OnScrollListeners[i] == elem)
                 delete OnScrollListeners[i];
     }
 }
 
 function OnScroll(callback, namespace) {
     OnScrollListeners.push({ 'callback': callback, 'namespace': namespace });
+}
+
+function LockScrolling(enabled, namespace) {
+    var x = window.scrollX, y = window.scrollY;
+    if (enabled)
+        OnScroll(function() {
+            window.scrollTo(x, y);
+        }, namespace);
+    else
+        RemoveOnScroll(namespace);
+}
+
+function isScrollingLocked(namespace) {
+    for (var i = 0; i < OnScrollListeners.length; i++)
+        if (OnScrollListeners[i].namespace == namespace)
+            return
 }
 //#endregion
 
@@ -303,9 +319,8 @@ function InitPreloaderAnimation() {
 }
 
 function RunPreloaderAnimation() {
-    OnScroll(function() {
-        window.scrollTo(0, 0);
-    }, 'PreloaderAnimation');
+    window.scrollTo(0, 0);
+    LockScrolling(true, 'RunPreloaderAnimation');
 
     var logo_box = $("#logo-box");
     var plug = $("#plug");
@@ -313,7 +328,7 @@ function RunPreloaderAnimation() {
     var helmet = $("#helmet");
     var label = $("#label");
 
-    "ЧОП Спарта".split('').forEach(function(item, i) {
+    'Группа компании "Спарта"'.split('').forEach(function(item, i) {
         label.append('<a class="label-char" style="transition-delay: ' + ((i * 50) + 'ms') + '">' + (item == ' ' ? '&#160;' : item) + '</a>')
     });
 
@@ -346,13 +361,13 @@ function RunPreloaderAnimation() {
                             circle.css({ 'will-change': 'auto' });
                             helmet.css({ 'will-change': 'auto' });
 
-                            RemoveOnScroll('PreloaderAnimation');
+                            LockScrolling(false, 'RunPreloaderAnimation');
                         }, 250);
                     }, 900);
-                }, 1000);
+                }, 2000);
             }, 500);
         }, 750);
-    }, 1000);
+    }, 100);
 }
 
 function JsonToDOM(json) {
