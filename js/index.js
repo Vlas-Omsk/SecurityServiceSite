@@ -1,10 +1,10 @@
 const services = {
-    physical:  'services/physical.html',
-    remote:    'services/remote.html',
-    video:     'services/video.html',
-    cash:      'services/cash.html',
-    polygraph: 'services/polygraph.html',
-    fire:      'services/fire.html'
+    physical:  '/services/physical.html',
+    remote:    '/services/remote.html',
+    video:     '/services/video.html',
+    cash:      '/services/cash.html',
+    polygraph: '/services/polygraph.html',
+    fire:      '/services/fire.html'
 };
 
 window.onload = function() {
@@ -54,10 +54,11 @@ function ___isBodyScrollable(on) {
 
 function OpenOverlay(overlay_id) {
     var overlay = $('.overlay[overlay-id="' + overlay_id + '"]');
-    overlay.find(".popup div.popup-content").css({ top: '0' });
-    overlay.addClass("visible");
-    if (overlay.length != 0)
+    if (overlay.length != 0) {
         ___isBodyScrollable(false);
+        overlay.find(".popup div.popup-content").css({ top: '0' });
+        overlay.addClass("visible");
+    }
 }
 
 function CloseOverlay(overlay_id) {
@@ -497,5 +498,33 @@ OnDOMContentLoaded(function() {
         elements.toArray(), 
         function(el) { el_VisibleChanged(el, null, "~400; +visible") }
     );
+});
+//#endregion
+
+//#region dropdown
+OnDOMContentLoaded(function() {
+    $("ul#menu li.dropdown").each(function(i, dropdown) {
+        dropdown = $(dropdown);
+        var ul = dropdown.children("ul")[0];
+
+        var initialPoint;
+        dropdown.hover(
+            function() {
+                ul.style.height = ul.scrollHeight + "px"
+            },
+            function() {
+                ul.style.height = 0 + "px"
+            }
+        ).on('touchstart', function(e) {
+            e.preventDefault();
+            initialPoint = e;
+        }).on('touchend', function(e) {
+            e.preventDefault();
+            if (e.target == initialPoint.target) {
+                initialPoint = null;
+                OpenOverlay(dropdown.attr('overlay-id'));
+            }
+        });
+    });
 });
 //#endregion

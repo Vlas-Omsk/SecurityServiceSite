@@ -70,6 +70,14 @@ function isScrollingLocked(namespace) {
 }
 //#endregion
 
+const dropdown_services = [
+    { tag: 'li', content: [ { 'tag': 'a', 'content': 'Физическая охрана', 'attrs': { 'transition': '${services.physical}', 'href': '' } } ] },
+    { tag: 'li', content: [ { 'tag': 'a', 'content': 'Пультовая охрана<br>Группы быстрого реагирования', 'attrs': { 'transition': '${services.remote}', 'href': '' } } ] },
+    { tag: 'li', content: [ { 'tag': 'a', 'content': 'Монтаж и обслуживание видеонаблюдения', 'attrs': { 'transition': '${services.video}', 'href': '' } } ] },
+    { tag: 'li', content: [ { 'tag': 'a', 'content': 'Инкассация', 'attrs': { 'transition': '${services.cash}', 'href': '' } } ] },
+    { tag: 'li', content: [ { 'tag': 'a', 'content': 'Полиграф<br>Детектор лжи', 'attrs': { 'transition': '${services.polygraph}', 'href': '' } } ] },
+    { tag: 'li', content: [ { 'tag': 'a', 'content': 'Монтаж и обслуживание пожарно-охранной сигнализации', 'attrs': { 'transition': '${services.fire}', 'href': '' } } ] }
+];
 const menu_json = [
     {
         'tag': 'ul',
@@ -78,9 +86,17 @@ const menu_json = [
         },
         'content': [
             { 
-                'tag': 'li', 
+                'tag': 'li',
+                'attrs': {
+                    'class': 'dropdown',
+                    'overlay-id': 'services'
+                },
                 'content': [ 
-                    { 'tag': 'a', 'content': 'Наши услуги', 'attrs': { 'transition': '', 'href': '/services.html'/*'/index.html#scrollto_services'*/ } }
+                    { 'tag': 'a', 'content': 'Наши услуги', 'attrs': { 'transition': '', 'href': '/services.html'/*'/index.html#scrollto_services'*/ } },
+                    {
+                        'tag': 'ul',
+                        content: dropdown_services
+                    }
                 ] 
             },
             { 
@@ -208,6 +224,48 @@ const popups = [
             }
         ]
     },
+    {
+        'tag': 'div',
+        'attrs': {
+            'class': 'overlay',
+            'overlay-id': 'services'
+        },
+        'content': [
+            {
+                'tag': 'div',
+                'attrs': {
+                    'class': 'popup'
+                },
+                'content': [
+                    {
+                        'tag': 'div',
+                        'attrs': {
+                            'class': 'popup-content'
+                        },
+                        'content': [
+                            { 'tag': 'h2', 'content': [
+                                { 'tag': 'a', attrs: { 'style': 'text-decoration: none; color: white;', 'href': '/services.html' }, content: 'Наши услуги' }
+                            ] },
+                            { 'tag': 'hr' },
+                            { 
+                                'tag': 'ul', 
+                                'attrs': {
+                                    'class': 'menu'
+                                },
+                                'content': dropdown_services
+                            }
+                        ]
+                    },
+                    {
+                        'tag': 'div',
+                        'attrs': {
+                            'class': 'close-popup'
+                        }
+                    }
+                ]
+            }
+        ]
+    },
     { 'tag': '!--', 'content': '#endregion' }
 ];
 const preloader = [
@@ -281,8 +339,13 @@ BeforeInvokeDOMContentLoaded = function () {
             case 'popups': body.append(JsonToDOM(popups)); break;
             case 'menu': 
                 var selected_permanently = body.attr("selected-permanently");
-                if (!isEmpty(selected_permanently))
-                    menu_json[0].content[selected_permanently].attrs = { "class": "selected-permanently" };
+                if (!isEmpty(selected_permanently)) {
+                    var li = menu_json[0].content[selected_permanently]
+                    if (li.attrs && li.attrs.class)
+                        li.attrs.class += " selected-permanently";
+                    else
+                        li.attrs = { "class": "selected-permanently" };
+                }
                 $("header").append(JsonToDOM(menu_json));
                 break;
         }
