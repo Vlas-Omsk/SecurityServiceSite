@@ -51,7 +51,7 @@
     align-items: center;
 }
 
-.content .image img {
+.content .accordion-item-body-content .image img {
     width: auto;
     max-width: 300px;
     border-radius:10px;
@@ -62,7 +62,7 @@
         flex-direction: column;
     }
 
-    .content .image img {
+    .content .accordion-item-body-content .image img {
         width: 100%;
         margin: 0 auto;
     }

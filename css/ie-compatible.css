@@ -9,6 +9,58 @@ ul#menu {
     overflow-y: hidden;
 }
 
+.wave-up, .wave-down {
+    width: 100%;
+}
+
+.menu li {
+    width: 100%;
+}
+
+.popup div.popup-content {
+    width: 100%;
+}
+
+.overlay[overlay-id=campaign] .popup .popup-content {
+    width: auto;
+}
+
+.content .container .left-image,
+.content .container .right-image {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 7;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.content .container .right-image {
+    -ms-grid-column: 6;
+    -ms-grid-column-span: 7;
+}
+
+.content .container .right-description {
+    -ms-grid-column: 8;
+    -ms-grid-column-span: 5;
+}
+
+.content .container .left-description {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+}
+
+@media screen and (max-width: 700px) {
+    .content .container .left-image,
+    .content .container .left-description {
+        -ms-grid-column: 1;
+    }
+    
+    .content .container .right-description,
+    .content .container .right-image {
+        -ms-grid-column: 1;
+        -ms-grid-row: 2;
+    }
+}
+
 /*#region grid*/
 .content div.grid ul li {
     margin: 0 15px 0 15px;

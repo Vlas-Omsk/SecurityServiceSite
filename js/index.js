@@ -8,12 +8,20 @@ const services = {
 };
 
 window.onload = function() {
-    document.body.style.opacity = 1;
+    IndexStyleLoaded();
     window.onscroll();
     FixIEActive();
 
     setTimeout(ReadHash, 500);
 };
+
+function IndexStyleLoaded() {
+    var helmet_img = new Image();
+    helmet_img.onload = helmet_img.onerror = function(){
+        setTimeout(function() { document.body.style.opacity = 1 }, 10);
+    };
+    helmet_img.src = '/media/helmet.svg';
+}
 
 //#region Popups
 OnDOMContentLoaded(function () {
@@ -47,15 +55,10 @@ OnDOMContentLoaded(function () {
     });
 });
 
-function ___isBodyScrollable(on) {
-    document.body.style.overflow = on ? "auto" : "hidden";
-    // LockScrolling(!on, 'Overlay')
-}
-
 function OpenOverlay(overlay_id) {
     var overlay = $('.overlay[overlay-id="' + overlay_id + '"]');
     if (overlay.length != 0) {
-        ___isBodyScrollable(false);
+        LockScrolling(true);
         overlay.find(".popup div.popup-content").css({ top: '0' });
         overlay.addClass("visible");
     }
@@ -68,7 +71,7 @@ function CloseOverlay(overlay_id) {
     else
         elements = $('.overlay[overlay-id="' + overlay_id + '"]').removeClass("visible");
     if (elements.length != 0)
-        ___isBodyScrollable(true);
+        LockScrolling(false);
 }
 //#endregion
 
@@ -126,7 +129,7 @@ function checkMenuPosition() {
     if (menu.classList.contains("fixed")) {
         if (!content.attributes.dontconsideheightofthemenu)
             content.style.paddingTop = menu.offsetHeight + "px";
-        if (window.pageYOffset < 110) {
+        if (window.pageYOffset < 110 && !document.body.classList.contains('unscrollable')) {
             content.style.paddingTop = null;
             menu.classList.remove("fixed");
         }
@@ -232,6 +235,7 @@ function el_Action(el, str) {
 
 //#region Transitions
 OnDOMContentLoaded(function() {
+    document.body.style.opacity = 0;
     $("*[transition]").each(function(i, elem) {
         elem.onclick = function(e) {
             e.preventDefault();
@@ -279,6 +283,8 @@ function ___TransitionTo(href, withtransition) {
             if (ee.target == document.body && document.body.style.opacity == 0 && ee.propertyName == "opacity")
                 window.location.href = href;
         });
+        if (IsIE())
+            CloseOverlay();
         document.body.style.opacity = 0;
     } else
         window.location.href = href;
@@ -315,6 +321,10 @@ function ScrollToElem(ID) {
     var elem = document.getElementById(ID);
     var to = elem.offsetTop - menu.offsetHeight;
 
+    YScrollTo(to);
+}
+
+function YScrollTo(to) {
     if (window.pageYOffset != to) {
         if (IsIE() || IsFirefox())
             SmoothScroll(to);
@@ -515,7 +525,9 @@ OnDOMContentLoaded(function() {
             function() {
                 ul.style.height = 0 + "px"
             }
-        ).on('touchstart', function(e) {
+        );
+        dropdown.children('a')
+        .on('touchstart', function(e) {
             e.preventDefault();
             initialPoint = e;
         }).on('touchend', function(e) {
@@ -524,7 +536,36 @@ OnDOMContentLoaded(function() {
                 initialPoint = null;
                 OpenOverlay(dropdown.attr('overlay-id'));
             }
+        }).on('click', function(e) {
+            if (IsIE()) {
+                e.preventDefault();
+                OpenOverlay(dropdown.attr('overlay-id'));
+            } else 
+                TransitionTo(dropdown.attr('to'));
         });
     });
+});
+//#endregion
+
+OnDOMContentLoaded(function() {
+    //if (!IsIE())
+        $('.wave1').attr('d', "M826.337463,25.5396311 C670.970254,58.655965 603.696181,68.7870267 447.802481,35.1443383 C293.342778,1.81111414 137.33377,1.81111414 0,1.81111414 L0,150 L1920,150 L1920,1.81111414 C1739.53523,-16.6853983 1679.86404,73.1607868 1389.7826,37.4859505 C1099.70117,1.81111414 981.704672,-7.57670281 826.337463,25.5396311 Z");
+});
+
+//#region ScrollToTop
+OnDOMContentLoaded(function() {
+    var scrolltotop = $('.scrolltotop');
+    scrolltotop.children('.rotate').click(function() {
+        YScrollTo(0);
+    });
+
+    OnScroll(function() {
+        if (window.pageYOffset >= 100 && scrolltotop.hasClass('hidden')) {
+            scrolltotop.removeClass('hidden');
+        } else if (window.pageYOffset < 100 && !scrolltotop.hasClass('hidden')) {
+            console.log('hidden')
+            scrolltotop.addClass('hidden');
+        }
+    }, 'ScrollToTop');
 });
 //#endregion

@@ -53,20 +53,24 @@ function OnScroll(callback, namespace) {
     OnScrollListeners.push({ 'callback': callback, 'namespace': namespace });
 }
 
-function LockScrolling(enabled, namespace) {
-    var x = window.scrollX, y = window.scrollY;
-    if (enabled)
-        OnScroll(function() {
-            window.scrollTo(x, y);
-        }, namespace);
-    else
-        RemoveOnScroll(namespace);
-}
+function LockScrolling(enabled) {
+    if (enabled) {
+        var scrollbarWidth = document.body.clientWidth;
 
-function isScrollingLocked(namespace) {
-    for (var i = 0; i < OnScrollListeners.length; i++)
-        if (OnScrollListeners[i].namespace == namespace)
-            return
+        // document.body.style.top = -window.scrollY + 'px';
+        // document.body.classList.add('unscrollable');
+        document.body.style.overflowY = 'hidden';
+
+        scrollbarWidth = document.body.clientWidth - scrollbarWidth;
+        document.body.style.width = 'calc(100% - ' + scrollbarWidth + 'px)';
+    } else {
+        // document.body.classList.remove('unscrollable');
+        // window.scrollTo(0, document.body.style.top.slice(1, -2));
+        // document.body.style.top = null;
+        document.body.style.overflowY = 'visible';
+        
+        document.body.style.width = '100%';
+    }
 }
 //#endregion
 
@@ -89,14 +93,11 @@ const menu_json = [
                 'tag': 'li',
                 'attrs': {
                     'class': 'dropdown',
-                    'overlay-id': 'services'
+                    'overlay-id': 'services',
+                    'to': '/services.html'
                 },
                 'content': [ 
-                    { 'tag': 'a', 'content': 'Наши услуги', 'attrs': { 'transition': '', 'href': '/services.html'/*'/index.html#scrollto_services'*/ } },
-                    {
-                        'tag': 'ul',
-                        content: dropdown_services
-                    }
+                    { 'tag': 'a', 'content': 'Наши услуги', 'attrs': { /*'/index.html#scrollto_services'*/ } }
                 ] 
             },
             { 
@@ -244,7 +245,7 @@ const popups = [
                         },
                         'content': [
                             { 'tag': 'h2', 'content': [
-                                { 'tag': 'a', attrs: { 'style': 'text-decoration: none; color: white;', 'href': '/services.html' }, content: 'Наши услуги' }
+                                { 'tag': 'a', attrs: { 'style': 'text-decoration: none; color: white;', 'transition': '', 'href': '/services.html' }, content: 'Наши услуги' }
                             ] },
                             { 'tag': 'hr' },
                             { 
@@ -346,10 +347,18 @@ BeforeInvokeDOMContentLoaded = function () {
                     else
                         li.attrs = { "class": "selected-permanently" };
                 }
+                if (!IsIE()) {
+                    menu_json[0].content[0].content.push({
+                        'tag': 'ul',
+                        content: dropdown_services
+                    });
+                }
                 $("header").append(JsonToDOM(menu_json));
                 break;
         }
     });
+
+    body.append($('<div class="scrolltotop hidden"><div class="rotate"><svg viewBox="0 0 20.23 29.93"><g><path d="M1.11,17.68l9,10,9-10"></path><path d="M10.11,26V0"></path></g></svg></div></div>'));
 
     InitPreloaderAnimation();
 };
