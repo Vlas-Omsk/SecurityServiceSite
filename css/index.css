@@ -16,6 +16,68 @@ body.unscrollable {
     text-rendering: optimizeLegibility;
 }
 
+/*#region static*/
+h1 {
+    margin: 0.67em 0;
+    padding: 0 2vw;
+    /* font-size: 100px; */
+    text-align: center;
+    font-weight: 700;
+    font-size: 4em;
+}
+
+h1:not([static]) {
+    position: relative;
+    overflow-y: hidden;
+}
+
+h1:not([static]) span {
+    display: block;
+    transform: translateY(100%);
+
+    transition: transform .8s cubic-bezier(.165,.84,.44,1);
+}
+
+h1:not([static]).visible span {
+    transform: none;
+}
+
+h2 {
+    text-align: center;
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    padding: 0 2vw;
+}
+
+h3 {
+    font-size: 16pt;
+    padding: 0 2vw;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-block-start: 1em;
+    padding-block-end: 1em;
+}
+
+p {
+    padding: 0 2vw;
+    box-sizing: border-box;
+    text-align: justify;
+    font-size: 14pt;
+}
+
+p.swappadding {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-block-start: 1em;
+    padding-block-end: 1em;
+}
+/*#endregion*/
+
 /*
 header div.logo          = 108px
 header div.logo div#line = 2px
@@ -55,12 +117,18 @@ div.logo {
     z-index: 9998;
 }
 
-div.logo div#line {
+div#line,
+.line {
     margin: auto 0 0 0;
     height: 2px;
     width: 0%;
     background-color: white;
     transition: width 2s cubic-bezier(.6,0,0,1);
+}
+
+.line {
+    width: 100%;
+    transition: none;
 }
 
 ul#menu {
@@ -335,7 +403,8 @@ ul#menu li.selected-permanently > a::after {
 }
 
 #map_gandonchir{
-    position: relative;
+    display: flex;
+    justify-content: center;
 }
 /*#endregion*/
 
@@ -352,7 +421,8 @@ ul#menu li.selected-permanently > a::after {
     will-change: pointer-events, opacity;
 }
 
-#logo-box {
+#logo-box,
+.logo-box {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -367,7 +437,17 @@ ul#menu li.selected-permanently > a::after {
     will-change: top, transform;
 }
 
-#logo-box #helmet {
+.logo-box {
+    position: relative;
+    top: 0;
+    transform: none;
+    transition: none;
+    will-change: auto;
+    z-index: 0;
+}
+
+#helmet,
+.helmet {
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -377,6 +457,18 @@ ul#menu li.selected-permanently > a::after {
     transition: height 1s cubic-bezier(.6,0,0,1);
 
     will-change: opacity, height;
+}
+
+.helmet {
+    height: 110px;
+    opacity: 1;
+    transition: none;
+    will-change: auto;
+}
+
+#helmet img,
+.helmet img {
+    height: 100%;
 }
 
 #logo-box #circle {
@@ -462,71 +554,11 @@ ul#menu li.selected-permanently > a::after {
     padding: 0 0 100px 0;
 }
 
-.content .padding {
+.padding {
     padding: 0 4vw 10px 4vw;
     max-width: 1600px;
     margin: 0 auto;
     overflow: hidden;
-}
-
-.content h1 {
-    margin: 0.67em 0;
-    padding: 0 2vw;
-    /* font-size: 100px; */
-    text-align: center;
-    font-weight: 700;
-    font-size: 4em;
-}
-
-.content h1:not([static]) {
-    position: relative;
-    overflow-y: hidden;
-}
-
-.content h1:not([static]) span {
-    display: block;
-    transform: translateY(100%);
-
-    transition: transform .8s cubic-bezier(.165,.84,.44,1);
-}
-
-.content h1:not([static]).visible span {
-    transform: none;
-}
-
-.content h2 {
-    text-align: center;
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    padding: 0 2vw;
-}
-
-.content h3 {
-    font-size: 16pt;
-    padding: 0 2vw;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-block-start: 1em;
-    padding-block-end: 1em;
-}
-
-.content p {
-    padding: 0 2vw;
-    box-sizing: border-box;
-    text-align: justify;
-    font-size: 14pt;
-}
-
-.content p.swappadding {
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-block-start: 1em;
-    padding-block-end: 1em;
 }
 
 .content .enum {
@@ -937,6 +969,10 @@ ul#menu li.selected-permanently > a::after {
     -ms-scrollbar-base-color: unset;
     -ms-scrollbar-track-color: transparent;
 }
+
+*::selection {
+    background: #9c9eaf;
+}
 /*#endregion*/
 
 /*#region transitions*/
@@ -948,6 +984,11 @@ body {
 
 *[transition] {
     cursor: pointer;
+}
+
+a[transition] {
+    color: white;
+    text-decoration: none;
 }
 /*#endregion*/
 
@@ -1074,41 +1115,35 @@ body {
     transform: rotateZ(90deg);
 }
 /*#endregion*/
-#logo_footer{
-    height:100px;
-    display: flex;
-    filter: invert(100%);
-    justify-content: center;
-    position:relative;
-    top: 15px;
-    clear: both;
-}
 
-footer:after{
-  content: '';
-  display: block;
-  clear: both;
-}
-footer{
-    font-size: 14px;
+/*#region Footer*/
+footer {
     font-weight: 700;
-    color: white;
-    text-transform: uppercase;
     overflow: auto;
     background: black;
-}
-.footer_text{
-    float: left;
-}
-#footer_line{
-    border: 1px solid white;
-    width: 100%;
-    clear: both;
-}
-.kek_position{
-    position: relative;
-    top: 35px;
+    padding-bottom: 20px;
+    color: white;
 }
 
+.footer-content > * {
+    display: block;
+    margin-right: auto;
+}
 
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.footer-content div p:not(:nth-child(1)) {
+    opacity: 0.5;
+}
+
+.footer-content div p:nth-child(1) {
+    opacity: 0.78;
+}
+
+.footer-content div p {
+    font-size: 14px;
+}
+/*#endregion*/

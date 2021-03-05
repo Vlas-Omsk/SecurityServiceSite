@@ -175,8 +175,7 @@ const popups = [
                             {
                                 'tag': 'b',
                                 'attrs': {
-                                    'class': 'phone_call',
-                                    'data-call': 'more_anal',
+                                    'data-call': '+73462582540',
                                     'title': 'Нажми для вызова'
                                 },
                                 'content': '8 (3462) 58-25-40'
@@ -185,8 +184,7 @@ const popups = [
                             {
                                 'tag': 'b',
                                 'attrs': {
-                                    'class': 'phone_call',
-                                    'data-call': 'director_anal',
+                                    'data-call': '+79825676870',
                                     'title': 'Нажми для вызова'
                                 },
                                 'content': '8 (982) 567-68-70'
@@ -195,8 +193,7 @@ const popups = [
                             {
                                 'tag': 'b',
                                 'attrs': {
-                                    'class': 'phone_call',
-                                    'data-call': 'director_anal',
+                                    'data-call': '+79227969157',
                                     'title': 'Нажми для вызова'
                                 },
                                 'content': '8 (922) 796-91-57'
@@ -303,7 +300,6 @@ const preloader = [
                     {
                         'tag': 'img',
                         'attrs': {
-                            'style': 'height: 100%;',
                             'src': '/media/helmet.svg'
                         }
                     }
@@ -324,6 +320,8 @@ const preloader = [
         ]
     }
 ];
+const footer = '<footer> <div class="logo-box"> <a transition class="helmet" href="/index.html"> <img src="/media/helmet.svg"/> </a> <h3 style="padding-top: 0;">Группа компании "Спарта"</h3> </div> <div class="line"></div> <div class="footer-content padding"> <div style=" width: 100%; display: flex; align-items: center; flex-direction: column;"> <p style="margin-bottom: 0; font-size: 15px; opacity: 1;">Сургут ул. 30 лет Победы д. 66 оф.3.3</p> <p style="font-size: 15px; opacity: 1;">Режим работы: с 9:00 до 19:00</p> </div> <div> <p>Онлайн консультант:</p> <p data-call="+73462582540">+7 (3462)-58-25-40</p> </div> <div> <p>По вопросам трудоустройства:</p> <p data-call="+79227969157" >+7 (922)-796-91-57</p> </div> <div> <p>Прием заявок на охрану</p> <p>- круглосуточно</p> </div> <div> <p>Сайт создан:</p> <p>- <a transition href="https://vk.com/vdergaev">vk.com/vdergaev</a></p> <p>- <a transition href="https://vk.com/g0d1sd5ad">vk.com/g0d1sd5ad</a></p> </div> </div> </footer>';
+const contacts = '<!-----------------------\r\n         CREATORS:      \r\n   vlas-omsk.github.io   \r\n   vk.com/vdergaev   \r\n   vk.com/g0d1sd5ad   \r\n------------------------->';
 
 BeforeInvokeDOMContentLoaded = function () {
     const body = $(document.body);
@@ -343,7 +341,7 @@ BeforeInvokeDOMContentLoaded = function () {
         return;
     }
     
-    const elements = (isEmpty(body.attr("inject-static-elements")) ? ["header", "menu", "popups"] : body.attr("inject-static-elements").split(','));
+    const elements = (isEmpty(body.attr("inject-static-elements")) ? ["header", "menu", "popups", "footer"] : body.attr("inject-static-elements").split(','));
     elements.forEach(function(elem) {
         switch (elem.trim()) {
             case 'header': body.prepend(JsonToDOM(header)); break;
@@ -365,10 +363,15 @@ BeforeInvokeDOMContentLoaded = function () {
                 }
                 $("header").append(JsonToDOM(menu_json));
                 break;
+            case 'footer':
+                var ftr = $(footer);
+                body.append(ftr);
+                break;
         }
     });
 
     body.append($('<div class="scrolltotop hidden"><div class="rotate"><svg viewBox="0 0 20.23 29.93"><g><path d="M1.11,17.68l9,10,9-10"></path><path d="M10.11,26V0"></path></g></svg></div></div>'));
+    body.prepend(contacts);
 
     InitPreloaderAnimation();
 };

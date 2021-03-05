@@ -43,40 +43,22 @@
                 }
             }
 
-.border_sex,
-.contacts form p > *,
-#contact_btn {
-    border-radius: 15px;
-    box-shadow: 4px 4px 10px rgba(0,0,0,0.06);
-    /* box-shadow: 0 0 16px rgba(0,0,0,.1);
-    border: 0 solid #dadce0; */
-    /* border-width: 0 1px 1px 1px; */
-}
+            .tiles-small-height-container {
+                display: flex;
+            }
 
-.border_sex {
-    border-radius: 0 0 15px 15px;
-    padding-bottom: 30px;
-    margin-top: -15px;
-    padding-top: 15px;
-    background-color: white;
-}
+            .tiles-small-height {
+                width: auto;
+                margin: 0 auto;
+            }
 
-
-@media screen and (max-width: 1000px) {
-    .content .padding {
-        padding: 0 0 10px 0;
-    }
-
-    .content .padding > .border_sex {
-        padding-left: 4vw;
-        padding-right: 4vw;
-    }
-}
-
-
+            .tiles-small-height li a {
+                max-width: 300px;
+                max-height: 160px;
+            }
         </style>
     </head>
-    <body inject-static-elements="popups, menu" debug="false">
+    <body inject-static-elements="popups, menu, footer" debug="false">
         <!--#region header-->
         <header>
             <div class="slider" auto-slide="3000">
@@ -144,11 +126,9 @@
                 <h1 id="documents">Наши <i>Документы</i></h1>
 
                 <ul class="gridline">
-                    
                     <li>
                         <a data-fancybox="album_documents" href="media/documents/2-1-1.jpg"><img src="media/documents/2-1-1.jpg"/></a>
                     </li>
-                   
                     <li>
                         <a data-fancybox="album_documents" href="media/documents/2-2-4.jpg"><img src="media/documents/2-2-4.jpg"/></a>
                     </li>
@@ -164,7 +144,6 @@
                     <li>
                         <a data-fancybox="album_documents" href="media/documents/5.jpg"><img src="media/documents/5.jpg"/></a>
                     </li>
-
                     <li>
                         <a data-fancybox="album_documents" href="media/documents/111.jpg"><img src="media/documents/111.jpg"/></a>
                     </li>
@@ -175,41 +154,44 @@
 
                 <h1>Наши <i>Клиенты</i></h1>
 
-                <ul class="tiles">
-                    <li>
-                        <a  class="hidden" OnScrollVisible="~200; -hidden">
-                            <img src="media/partners/sportmaster.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a  class="hidden" OnScrollVisible="~200; -hidden">
-                            <img src="media/partners/ostin.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a  class="hidden" OnScrollVisible="~200; -hidden">
-                            <img src="media/partners/gazprom.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a  class="hidden" OnScrollVisible="~200; -hidden">
-                            <img src="media/partners/utair.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a  class="hidden" OnScrollVisible="~200; -hidden">
-                            <img src="media/partners/carcreate.jpg"/>
-                        </a>
-                    </li>
-                    <li>
-                        <a  class="hidden" OnScrollVisible="~200; -hidden">
-                            <img src="media/partners/mta.jpg"/>
-                        </a>
-                    </li>
-                </ul>
+                <div class="tiles-small-height-container">
+                    <ul class="tiles tiles-small-height">
+                        <li>
+                            <a transition href="https://www.sportmaster.ru" class="hidden" OnScrollVisible="~200; -hidden">
+                                <img src="media/partners/sportmaster.jpg"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a transition href="https://ostin.com" class="hidden" OnScrollVisible="~200; -hidden">
+                                <img src="media/partners/ostin.jpg"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a transition href="https://www.gazprom.ru" class="hidden" OnScrollVisible="~200; -hidden">
+                                <img src="media/partners/gazprom.jpg"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a transition href="https://www.utair.ru" class="hidden" OnScrollVisible="~200; -hidden">
+                                <img src="media/partners/utair.jpg"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a transition href="http://www.avtodorstroy.ru" class="hidden" OnScrollVisible="~200; -hidden">
+                                <img src="media/partners/carcreate.jpg"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a transition href="http://mtacompany.ru" class="hidden" OnScrollVisible="~200; -hidden">
+                                <img src="media/partners/mta-scale.jpg"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
                    
-
-               <!-- <h3>За время работы с нами заключили договора:</h3>
+                <!-- Removed Content -->
+                <!--
+                <h3>За время работы с нами заключили договора:</h3>
                 <ul class="enum">
                     <li>Филиалы Компании «Шлюмберже Лоджелко, Инк» в ХМАО, ЯНАО и республике Коми, Томская, Новосибирская, Волгоградская и Оренбургская области</li>
                     <li>Филиалы Компании «ПетроАльянс Сервис Компании Лимитед» в ХМАО, ЯНАО и республике Коми</li>
@@ -225,58 +207,61 @@
                 </ul> 
 
                 <p>Практически от всех охраняемых объектов в адрес руководства и сотрудников компании поступили благодарственные письма за качество охранных услуг. За долгое время своей работы на рынке охранных услуг мы накопили большой опыт в обеспечении охраны объектов, осуществляя контрольно- пропускной и внутриобъектовые режимы.</p>
+                -->
 
-            -->
-               <div class="partner_part_2">
-                <h3>Под нашей охранной находятся:</h3>
-                <ul class="enum">
-                    <li>производственные объекты нефтегазодобывающего комплекса</li>
-                    <li>промышленные объекты и базы со сложным рельефом охраняемых территорий и большим количеством расположенных на указанных территориях зданий и сооружений</li>
-                    <li>крупные офисные центры</li>
-                    <li>муниципальные бюджетные общеобразовательные учреждения</li>
-                    <li>административно-бытовые комплексы</li>
-                </ul>
+                <div class="partner_part_2">
+                    <h3>Под нашей охранной находятся:</h3>
+                    <ul class="enum">
+                        <li>производственные объекты нефтегазодобывающего комплекса</li>
+                        <li>промышленные объекты и базы со сложным рельефом охраняемых территорий и большим количеством расположенных на указанных территориях зданий и сооружений</li>
+                        <li>крупные офисные центры</li>
+                        <li>муниципальные бюджетные общеобразовательные учреждения</li>
+                        <li>административно-бытовые комплексы</li>
+                    </ul>
 
-                <p>
-                    География охраняемых объектов распространяется на все крупные города Ханты- Мансийского и Ямало- Ненецкого автономных округов.
-                    Нами накоплен уникальный опыт оказания охранных услуг, уделяется особое внимание подбору и расстановке кадров, совершенствованию мастерства наших сотрудников, численность которых составляет более 180 человек. Наши сотрудники –это лицензированные специалисты, прошедшие специальную и психофизиологическую подготовку, способные в полной мере обеспечить безопасность объекта любой сложности и обеспечить сохранность имущества при перевозке. За время работы нами сформирован сложившийся, сплоченный коллектив, способный решать задачи по охране объектов любой сложности. Практически все сотрудники имеют большой опыт работы. 
-                </p>
-                <p>
-                    Опытные специалисты нашей компании по Вашему желанию осуществляют установку, монтаж и постоянное обслуживание всего спектра охранных средств на заданном объекте. За долгое время своей работы на рынке охранных услуг мы накопили большой опыт в обеспечении охраны объектов собственности.
-                    Грамотная организация охраны объекта и ответственность в работе, уважение к интересам Заказчика – это те качества, на которые Вы можете рассчитывать, сотрудничая с нами.
-                </p>
-            </div>
+                    <p>
+                        География охраняемых объектов распространяется на все крупные города Ханты- Мансийского и Ямало- Ненецкого автономных округов.
+                        Нами накоплен уникальный опыт оказания охранных услуг, уделяется особое внимание подбору и расстановке кадров, совершенствованию мастерства наших сотрудников, численность которых составляет более 180 человек. Наши сотрудники –это лицензированные специалисты, прошедшие специальную и психофизиологическую подготовку, способные в полной мере обеспечить безопасность объекта любой сложности и обеспечить сохранность имущества при перевозке. За время работы нами сформирован сложившийся, сплоченный коллектив, способный решать задачи по охране объектов любой сложности. Практически все сотрудники имеют большой опыт работы. 
+                    </p>
+                    <p>
+                        Опытные специалисты нашей компании по Вашему желанию осуществляют установку, монтаж и постоянное обслуживание всего спектра охранных средств на заданном объекте. За долгое время своей работы на рынке охранных услуг мы накопили большой опыт в обеспечении охраны объектов собственности.
+                        Грамотная организация охраны объекта и ответственность в работе, уважение к интересам Заказчика – это те качества, на которые Вы можете рассчитывать, сотрудничая с нами.
+                    </p>
+                </div>
             </div>
         </div>
 
-
-
-<footer class="content padding">
-    <div id="logo_footer">
-      <img src=".temp-images/helmet.png"/>
-    </div>
-    <div class="kek_position">
-    <div id="footer_line">
-    </div>
-    <div class="footer_text">
-      <p>Сургут ул. 30 лет Победы д. 66 оф.3.3</p>
-      <p>Режим работы: с 9:00 до 19:00</p>
-    </div>
-   <div class="footer_text">
-   <p>Онлайн консультант:</p>
-   <p>+7(3462)-58-25-40</p>
-  </div>
-  <div class="footer_text">
-    <p>По вопросам трудоустройства:</p>
-    <p>+7(922)-796-91-57</p>
-  </div>
-  <div class="footer_text">
-    <p>Прием заявок на охрану</p>
-    <p>- круглосуточно</p>
-  </div>
-</div>
-
-    </footer>
-</div>
+        <!-- Moved content -->
+        <!-- <footer>
+            <div class="logo-box">
+                <a transition class="helmet" href="/index.html">
+                    <img src="/media/helmet.svg"/>
+                </a>
+            </div>
+            <div class="line"></div>
+            <div class="footer-content">
+                <div style="
+                    width: 100%; 
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    opacity: 0.8;">
+                    <p style="margin-bottom: 0; font-size: 15px;">Сургут ул. 30 лет Победы д. 66 оф.3.3</p>
+                    <p style="font-size: 15px;">Режим работы: с 9:00 до 19:00</p>
+                </div>
+                <div>
+                    <p>Онлайн консультант:</p>
+                    <p data-call="+73462582540">+7 (3462)-58-25-40</p>
+                </div>
+                <div>
+                    <p>По вопросам трудоустройства:</p>
+                    <p data-call="+79227969157" >+7 (922)-796-91-57</p>
+                </div>
+                <div>
+                    <p>Прием заявок на охрану</p>
+                    <p>- круглосуточно</p>
+                </div>
+            </div>
+        </footer> -->
     </body>
 </html>

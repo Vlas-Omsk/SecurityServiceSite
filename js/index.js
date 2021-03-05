@@ -8,6 +8,11 @@ const services = {
 };
 
 window.onload = function() {
+    var ftr = $("footer");
+    if (ftr[0].offsetTop < window.innerHeight) {
+        ftr.css({ 'margin-top': (window.innerHeight - ftr[0].offsetTop + 10) + "px" });
+    }
+
     IndexStyleLoaded();
     window.onscroll();
     FixIEActive();
@@ -18,7 +23,7 @@ window.onload = function() {
 function IndexStyleLoaded() {
     var helmet_img = new Image();
     helmet_img.onload = helmet_img.onerror = function(){
-        setTimeout(function() { document.body.style.opacity = 1 }, 10);
+        setTimeout(function() { document.body.style.opacity = 1 }, 200);
     };
     helmet_img.src = '/media/helmet.svg';
 }
@@ -45,13 +50,10 @@ OnDOMContentLoaded(function () {
             CloseOverlay();
     });
 
-    $(".phone_call").on("click",function(){
+    $("*[data-call]").on("click",function(){
         var id_tel = $(this).attr("data-call");
         console.log("you eblan");
-        if(id_tel == "more_anal")
-            location.replace("tel:+73462582540");
-        else
-            location.replace("tel:+7982 567-68-70");
+        location.replace("tel:" + id_tel);
     });
 });
 
@@ -563,7 +565,6 @@ OnDOMContentLoaded(function() {
         if (window.pageYOffset >= 100 && scrolltotop.hasClass('hidden')) {
             scrolltotop.removeClass('hidden');
         } else if (window.pageYOffset < 100 && !scrolltotop.hasClass('hidden')) {
-            console.log('hidden')
             scrolltotop.addClass('hidden');
         }
     }, 'ScrollToTop');
