@@ -179,7 +179,7 @@ const popups = [
                                     'data-call': 'more_anal',
                                     'title': 'Нажми для вызова'
                                 },
-                                'content': '8 3462 58-25-40'
+                                'content': '8 (3462) 58-25-40'
                             },
                             { 'tag': '#', 'content': ' - Многоканальный' }, { 'tag': 'br' },
                             {
@@ -189,7 +189,17 @@ const popups = [
                                     'data-call': 'director_anal',
                                     'title': 'Нажми для вызова'
                                 },
-                                'content': '8 982 567-68-70'
+                                'content': '8 (982) 567-68-70'
+                            },
+                            { 'tag': '#', 'content': ' - Марейченко Александр Александрович' }, { 'tag': 'br' },
+                            {
+                                'tag': 'b',
+                                'attrs': {
+                                    'class': 'phone_call',
+                                    'data-call': 'director_anal',
+                                    'title': 'Нажми для вызова'
+                                },
+                                'content': '8 (922) 796-91-57'
                             },
                             { 'tag': '#', 'content': ' – Генеральный директор' }, { 'tag': 'br' },
                             { 'tag': '#', 'content': 'Почта: ' }, { 'tag': 'b', 'content': 'sparta3462@mail.ru' },

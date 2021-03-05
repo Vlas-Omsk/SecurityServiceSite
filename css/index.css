@@ -1074,3 +1074,41 @@ body {
     transform: rotateZ(90deg);
 }
 /*#endregion*/
+#logo_footer{
+    height:100px;
+    display: flex;
+    filter: invert(100%);
+    justify-content: center;
+    position:relative;
+    top: 15px;
+    clear: both;
+}
+
+footer:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+footer{
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    overflow: auto;
+    background: black;
+}
+.footer_text{
+    float: left;
+}
+#footer_line{
+    border: 1px solid white;
+    width: 100%;
+    clear: both;
+}
+.kek_position{
+    position: relative;
+    top: 35px;
+}
+
+
+

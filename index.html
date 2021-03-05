@@ -11,6 +11,7 @@
         <link rel="icon" href="media/favicon.png" type="image-x/png"/>
 
         <link href="css/slider.css" rel="stylesheet"/>
+<link href="css/border.css" rel="stylesheet"/>
         
         <script src="js/jquery.min.js"></script>
         <script src="js/inject-static-elements.js"></script>
@@ -20,6 +21,7 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
 		<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
 
         <style>
             header {
@@ -40,6 +42,38 @@
                     height: 150vh;
                 }
             }
+
+.border_sex,
+.contacts form p > *,
+#contact_btn {
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.06);
+    /* box-shadow: 0 0 16px rgba(0,0,0,.1);
+    border: 0 solid #dadce0; */
+    /* border-width: 0 1px 1px 1px; */
+}
+
+.border_sex {
+    border-radius: 0 0 15px 15px;
+    padding-bottom: 30px;
+    margin-top: -15px;
+    padding-top: 15px;
+    background-color: white;
+}
+
+
+@media screen and (max-width: 1000px) {
+    .content .padding {
+        padding: 0 0 10px 0;
+    }
+
+    .content .padding > .border_sex {
+        padding-left: 4vw;
+        padding-right: 4vw;
+    }
+}
+
+
         </style>
     </head>
     <body inject-static-elements="popups, menu" debug="false">
@@ -110,15 +144,11 @@
                 <h1 id="documents">Наши <i>Документы</i></h1>
 
                 <ul class="gridline">
-                    <li>
-                        <a data-fancybox="album_documents" href="media/documents/10.jpg"><img src="media/documents/10.jpg"/></a>
-                    </li>
+                    
                     <li>
                         <a data-fancybox="album_documents" href="media/documents/2-1-1.jpg"><img src="media/documents/2-1-1.jpg"/></a>
                     </li>
-                    <li>
-                        <a data-fancybox="album_documents" href="media/documents/2-2-3.jpg"><img src="media/documents/2-2-3.jpg"/></a>
-                    </li>
+                   
                     <li>
                         <a data-fancybox="album_documents" href="media/documents/2-2-4.jpg"><img src="media/documents/2-2-4.jpg"/></a>
                     </li>
@@ -134,29 +164,52 @@
                     <li>
                         <a data-fancybox="album_documents" href="media/documents/5.jpg"><img src="media/documents/5.jpg"/></a>
                     </li>
+
                     <li>
-                        <a data-fancybox="album_documents" href="media/documents/6.jpg"><img src="media/documents/6.jpg"/></a>
+                        <a data-fancybox="album_documents" href="media/documents/111.jpg"><img src="media/documents/111.jpg"/></a>
                     </li>
                     <li>
-                        <a data-fancybox="album_documents" href="media/documents/7.jpg"><img src="media/documents/7.jpg"/></a>
-                    </li>
-                    <li>
-                        <a data-fancybox="album_documents" href="media/documents/8.jpg"><img src="media/documents/8.jpg"/></a>
-                    </li>
-                    <li>
-                        <a data-fancybox="album_documents" href="media/documents/9.jpg"><img src="media/documents/9.jpg"/></a>
-                    </li>
-                    <li>
-                        <a data-fancybox="album_documents" href="media/documents/Sparta-18-1.jpg"><img src="media/documents/Sparta-18-1.jpg"/></a>
-                    </li>
-                    <li>
-                        <a data-fancybox="album_documents" href="media/documents/Sparta-18-2.jpg"><img src="media/documents/Sparta-18-2.jpg"/></a>
+                        <a data-fancybox="album_documents" href="media/documents/222.jpg"><img src="media/documents/222.jpg"/></a>
                     </li>
                 </ul>
 
                 <h1>Наши <i>Клиенты</i></h1>
 
-                <h3>За время работы с нами заключили договора:</h3>
+                <ul class="tiles">
+                    <li>
+                        <a  class="hidden" OnScrollVisible="~200; -hidden">
+                            <img src="media/partners/sportmaster.jpg"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a  class="hidden" OnScrollVisible="~200; -hidden">
+                            <img src="media/partners/ostin.jpg"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a  class="hidden" OnScrollVisible="~200; -hidden">
+                            <img src="media/partners/gazprom.jpg"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a  class="hidden" OnScrollVisible="~200; -hidden">
+                            <img src="media/partners/utair.jpg"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a  class="hidden" OnScrollVisible="~200; -hidden">
+                            <img src="media/partners/carcreate.jpg"/>
+                        </a>
+                    </li>
+                    <li>
+                        <a  class="hidden" OnScrollVisible="~200; -hidden">
+                            <img src="media/partners/mta.jpg"/>
+                        </a>
+                    </li>
+                </ul>
+                   
+
+               <!-- <h3>За время работы с нами заключили договора:</h3>
                 <ul class="enum">
                     <li>Филиалы Компании «Шлюмберже Лоджелко, Инк» в ХМАО, ЯНАО и республике Коми, Томская, Новосибирская, Волгоградская и Оренбургская области</li>
                     <li>Филиалы Компании «ПетроАльянс Сервис Компании Лимитед» в ХМАО, ЯНАО и республике Коми</li>
@@ -169,10 +222,12 @@
                     <li>Сеть магазинов ООО «Спортмастер»</li>
                     <li>Сеть магазинов ООО «Остин»</li>
                     <li>Аптечная сеть «Ригла»</li>
-                </ul>
+                </ul> 
 
                 <p>Практически от всех охраняемых объектов в адрес руководства и сотрудников компании поступили благодарственные письма за качество охранных услуг. За долгое время своей работы на рынке охранных услуг мы накопили большой опыт в обеспечении охраны объектов, осуществляя контрольно- пропускной и внутриобъектовые режимы.</p>
 
+            -->
+               <div class="partner_part_2">
                 <h3>Под нашей охранной находятся:</h3>
                 <ul class="enum">
                     <li>производственные объекты нефтегазодобывающего комплекса</li>
@@ -191,6 +246,37 @@
                     Грамотная организация охраны объекта и ответственность в работе, уважение к интересам Заказчика – это те качества, на которые Вы можете рассчитывать, сотрудничая с нами.
                 </p>
             </div>
+            </div>
         </div>
+
+
+
+<footer class="content padding">
+    <div id="logo_footer">
+      <img src=".temp-images/helmet.png"/>
+    </div>
+    <div class="kek_position">
+    <div id="footer_line">
+    </div>
+    <div class="footer_text">
+      <p>Сургут ул. 30 лет Победы д. 66 оф.3.3</p>
+      <p>Режим работы: с 9:00 до 19:00</p>
+    </div>
+   <div class="footer_text">
+   <p>Онлайн консультант:</p>
+   <p>+7(3462)-58-25-40</p>
+  </div>
+  <div class="footer_text">
+    <p>По вопросам трудоустройства:</p>
+    <p>+7(922)-796-91-57</p>
+  </div>
+  <div class="footer_text">
+    <p>Прием заявок на охрану</p>
+    <p>- круглосуточно</p>
+  </div>
+</div>
+
+    </footer>
+</div>
     </body>
 </html>
