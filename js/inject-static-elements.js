@@ -184,12 +184,11 @@ const popups = [
                             {
                                 'tag': 'b',
                                 'attrs': {
-                                    'data-call': '+79825676870',
-                                    'title': 'Нажми для вызова'
+                                    
                                 },
-                                'content': '8 (982) 567-68-70'
+                                'content': '8 (922) 796-91-57'
                             },
-                            { 'tag': '#', 'content': ' - Марейченко Александр Александрович' }, { 'tag': 'br' },
+                            { 'tag': '#', 'content': ' - Зам Генерального Директора' }, { 'tag': 'br' },
                             {
                                 'tag': 'b',
                                 'attrs': {
@@ -303,8 +302,12 @@ const preloader = [
                             'src': '/media/helmet.svg'
                         }
                     }
-                ]
+                ],
+
+
+
             },
+
             {
                 'tag': 'div',
                 'attrs': {
@@ -320,8 +323,8 @@ const preloader = [
         ]
     }
 ];
-const footer = '<footer> <div class="logo-box"> <a transition class="helmet" href="/index.html"> <img src="/media/helmet.svg"/> </a> <h3 style="padding-top: 0;">Группа компании "Спарта"</h3> </div> <div class="line"></div> <div class="footer-content padding"> <div style=" width: 100%; display: flex; align-items: center; flex-direction: column;"> <p style="margin-bottom: 0; font-size: 15px; opacity: 1;">Сургут ул. 30 лет Победы д. 66 оф.3.3</p> <p style="font-size: 15px; opacity: 1;">Режим работы: с 9:00 до 19:00</p> </div> <div> <p>Онлайн консультант:</p> <p data-call="+73462582540">+7 (3462)-58-25-40</p> </div> <div> <p>По вопросам трудоустройства:</p> <p data-call="+79227969157" >+7 (922)-796-91-57</p> </div> <div> <p>Прием заявок на охрану</p> <p>- круглосуточно</p> </div> <div> <p>Сайт создан:</p> <p>- <a transition href="https://vk.com/vdergaev">vk.com/vdergaev</a></p> <p>- <a transition href="https://vk.com/g0d1sd5ad">vk.com/g0d1sd5ad</a></p> </div> </div> </footer>';
-const contacts = '<!-----------------------\r\n         CREATORS:      \r\n   vlas-omsk.github.io   \r\n   vk.com/vdergaev   \r\n   vk.com/g0d1sd5ad   \r\n------------------------->';
+const footer = '<footer> <div class="logo-box"> <a transition class="helmet" href="/index.html"> <img src="/media/helmet.svg"/> </a> <h3 style="padding-top: 0;">Группа компании "Спарта"</h3> </div> <div class="line"></div> <div class="footer-content padding"> <div style=" width: 100%; display: flex; align-items: center; flex-direction: column;"> <p style="margin-bottom: 0; font-size: 15px; opacity: 1;">Сургут ул. 30 лет Победы д. 66 оф.3.3</p> <p style="font-size: 15px; opacity: 1;">Режим работы: с 9:00 до 19:00</p> </div> <div> <p>Онлайн консультант:</p> <p data-call="+73462582540">+7 (3462)-58-25-40</p> </div> <div> <p>По вопросам трудоустройства:</p> <p data-call="+79227969157" >+7 (922)-796-91-57</p> </div> <div> <p>Прием заявок на охрану</p> <p>- круглосуточно</p> <div  style="border:2px solid #9c9eaf;border-radius:5px;"><p>Группа компаний СПАРТА:</p><p>-ООО ЧОП "Вымпел-Безопасность"</p><p>-ООО ЧОП "Спарта"</p><p>-ООО ЧОО "Зевс"</p><p>-ООО ЧОП "НГБ"</p></div> </div> </footer>';
+const contacts = '<!------------------------------------------------>';
 
 BeforeInvokeDOMContentLoaded = function () {
     const body = $(document.body);
