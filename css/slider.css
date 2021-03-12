@@ -1,5 +1,6 @@
 .slider {
     position: absolute;
+
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -30,12 +31,12 @@
     position: absolute;
     top: 0;
     height: 100%;
-    width: 100%;
+    width: 70%;
     opacity: 0.5;
-    background-position-x: 50%;
-    background-position-y: 50%;
+    
     background-repeat: no-repeat;
     background-size: cover;
+    transform: translate(0px,0px);
     transition: opacity .5s, background-position-x 1s ease;
 }
 
