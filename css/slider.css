@@ -36,7 +36,7 @@
     background-position-y: 50%;
     background-repeat: no-repeat;
     background-size: cover;
-    transition: opacity .5s, background-position-x 1s ease;
+    transition: opacity .5s, background-position-x 1s ease, background-position-y 1s ease;
 }
 
 .slider div[slide].contain {

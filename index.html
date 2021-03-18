@@ -56,21 +56,52 @@
                 max-width: 300px;
                 max-height: 160px;
             }
+
+            .slider div[slide][active]:nth-child(2) {
+                background-position-x: 95%;
+            }
+
+            .slider div[slide][active]:nth-child(3) {
+                background-position-y: 0%; 
+                background-position-x: 95%;
+            }
+
+            .slider div[slide][active]:nth-child(4) {
+                background-position-x: 10%;
+                background-position-y: 25%;
+            }
+
+            .slider div[slide][active]:nth-child(6) {
+                background-position-x: 90%;
+            }
+
+            .slider div[slide][active]:nth-child(7) {
+                background-position-x: 20%;
+            }
+
+            .slider div[slide][active]:nth-child(9) {
+                background-position-y: 35%;
+            }
+
+            .slider div[slide][active]:nth-child(10) {
+                background-position-x: 75%;
+                background-position-y: 35%;
+            }
         </style>
     </head>
     <body inject-static-elements="popups, menu, footer" debug="false">
         <!--#region header-->
         <header>
             <div class="slider" auto-slide="3000">
-                <div slide="Система видеонаблюдения" style="background-image: url('media/index-slider/11-Sistema-videonablyudeniya-n.jpg');"></div>
-                <div slide="Контрольно-пропускной режим" style="background-image: url('media/index-slider/1-4-KPP-n.jpg');"></div>
+                <div slide="Система видеонаблюдения"     style="background-image: url('media/index-slider/11-Sistema-videonablyudeniya-n.jpg');"></div>
+                <div slide="Группа быстрого реагирования" style="background-image: url('media/index-slider/1-4-KPP-n.jpg');"></div>
                 <div slide="Контрольно-пропускной режим" style="background-image: url('media/index-slider/1-KPP-1-n.jpg');"></div>
-                <div slide="Внутриобъектовый режим" style="background-image: url('media/index-slider/6-1-VOR-n.jpg');"></div>
-                <div slide="Внутриобъектовый режим" style="background-image: url('media/index-slider/6-2-VOR-n.jpg');"></div>
-                <div slide="Внутриобъектовый режим" style="background-image: url('media/index-slider/6-3-VOR-n.jpg');"></div>
+                <div slide="Группа быстрого реагирования"      style="background-image: url('media/index-slider/6-1-VOR-n.jpg');"></div>
+                <div slide="Внутриобъектовый режим"      style="background-image: url('media/index-slider/6-2-VOR-n.jpg');"></div>
+                <div slide="Группа быстрого реагирования"      style="background-image: url('media/index-slider/6-3-VOR-n.jpg');"></div>
                 <div slide="Пульт централизованного наблюдения" style="background-image: url('media/index-slider/7-4-VIDEO-n.jpg');"></div>
                 <div slide="Группа быстрого реагирования" style="background-image: url('media/index-slider/_1.jpg');"></div>
-                <div slide="Группа быстрого реагирования" style="background-image: url('media/index-slider/_2.jpg'); background-position-y: 35%;"></div>
+                <div slide="Группа быстрого реагирования" style="background-image: url('media/index-slider/_2.jpg');"></div>
                 <div slide="Группа быстрого реагирования" style="background-image: url('media/index-slider/_33.jpg');"></div>
 
                 <div class="title"><h1></h1></div>
@@ -83,6 +114,11 @@
 
         <div class="content" DontConsideHeightOfTheMenu>
             <div class="padding">
+                <h1>Частное охранное предприятие <i>"Cпарта"</i></h1>
+
+                <p>Группа компаний Спарта на рынке охранных услуг более 10 лет, надежно и профессионально решает задачи в сфере обеспечения охраны и безопасности объектов. Учредители и руководящий состав компании состоит из сотрудников, имеющих в прошлом большой опыт работы в правоохранительных органах Сургута и ХМАО-Югры или проходившие службу в Вооруженных силах СССР и России, обладающие большим опытом работы по самым различным направлениям безопасности.</p>
+                <p>Государство осуществляет строгий надзор над всеми аспектами нашей трудовой деятельности, никаких вопросов ни у одного из контролирующих органов к нам никогда не возникало. Мы очень дорожим лицензией и не допускаем никаких противоправных действий, грозящих ее отзывом. Как и все профессионалы своего дела, мы имеем свои секреты мастерства, но все они в рамках закона и общепринятых этических норм.</p>
+
                 <h1 id="services">Наши <i>услуги</i></h1>
 
                 <ul class="tiles">
@@ -117,11 +153,6 @@
                         </a>
                     </li>
                 </ul>
-
-                <h1>Частное охранное предприятие <i>"Cпарта"</i></h1>
-
-                <p>Группа компаний Спарта на рынке охранных услуг более 10 лет, надежно и профессионально решает задачи в сфере обеспечения охраны и безопасности объектов. Учредители и руководящий состав компании состоит из сотрудников, имеющих в прошлом большой опыт работы в правоохранительных органах Сургута и ХМАО-Югры или проходившие службу в Вооруженных силах СССР и России, обладающие большим опытом работы по самым различным направлениям безопасности.</p>
-                <p>Государство осуществляет строгий надзор над всеми аспектами нашей трудовой деятельности, никаких вопросов ни у одного из контролирующих органов к нам никогда не возникало. Мы очень дорожим лицензией и не допускаем никаких противоправных действий, грозящих ее отзывом. Как и все профессионалы своего дела, мы имеем свои секреты мастерства, но все они в рамках закона и общепринятых этических норм.</p>
 
                 <h1 id="documents">Наши <i>Документы</i></h1>
 
@@ -184,6 +215,21 @@
                         <li>
                             <a transition href="http://mtacompany.ru" class="hidden" OnScrollVisible="~200; -hidden">
                                 <img src="media/partners/mta-scale.jpg"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a transition href="https://www.slb.ru" class="hidden" OnScrollVisible="~200; -hidden">
+                                <img src="media/partners/schlumber.jpg"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a transition href="https://www.wellboreintegrity.com" class="hidden" OnScrollVisible="~200; -hidden">
+                                <img src="media/partners/willbore.jpg"/>
+                            </a>
+                        </li>
+                        <li>
+                            <a transition href="https://zoloto585.ru" class="hidden" OnScrollVisible="~200; -hidden">
+                                <img src="media/partners/gold.jpg"/>
                             </a>
                         </li>
                     </ul>

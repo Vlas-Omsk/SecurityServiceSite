@@ -1,4 +1,9 @@
-function swap(sliderid, slideid) {
+var DelayedSwap = false;
+
+function swap(sliderid, slideid, autoswap) {
+    if (!autoswap)
+        DelayedSwap = true;
+
     $('.slider:eq(' + sliderid + ')').attr("slideid", slideid);
 
     swaptext($('.slider:eq(' + sliderid + ') .title h1'), $('.slider:eq(' + sliderid + ') div[slide]:eq(' + slideid + ')').attr('slide'));
@@ -25,20 +30,17 @@ OnDOMContentLoaded(function () {
             slides.append("<li onclick='swap(" + indexp + ", " + index + ")'></li>");
         });
         $(elemp).append(slides);
-        swap(indexp, 0);
+        swap(indexp, 0, true);
 
         if ($(elemp).attr("auto-slide") != undefined) {
             var count = $(elemp).children('div[slide]').length;
-            var lastid = Number($(elemp).attr("slideid"));
             setInterval(function() {
-                var indexactive = Number($(elemp).attr("slideid")) + 1;
-                if (lastid == indexactive - 1) {
+                if (!DelayedSwap) {
+                    var indexactive = Number($(elemp).attr("slideid")) + 1;
                     if (indexactive >= count)
                         indexactive = 0;
-                    lastid = indexactive;
-                    swap(indexp, indexactive);
-                } else
-                    lastid = indexactive - 1;
+                    swap(indexp, indexactive, true);
+                } else DelayedSwap = false;
             }, $(elemp).attr("auto-slide"));
         }
     });
