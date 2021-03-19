@@ -570,3 +570,7 @@ OnDOMContentLoaded(function() {
     }, 'ScrollToTop');
 });
 //#endregion
+
+OnDOMContentLoaded(function() {
+    $('img').attr('loading', 'lazy');
+});

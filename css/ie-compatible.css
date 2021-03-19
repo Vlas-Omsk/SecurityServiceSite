@@ -150,65 +150,45 @@ ul#menu {
 /*#endregion*/
 
 /*#region tiles*/
-.tiles li:nth-child(1) {
+.tiles li:nth-child(3n+1) {
     -ms-grid-column: 1;
-    -ms-grid-row: 1;
 }
 
-.tiles li:nth-child(2) {
+.tiles li:nth-child(3n+2) {
     -ms-grid-column: 2;
-    -ms-grid-row: 1;
 }
 
-.tiles li:nth-child(3) {
+.tiles li:nth-child(3n) {
     -ms-grid-column: 3;
+}
+
+.tiles li:nth-child(-n+6) {
+    -ms-grid-row: 2;
+}
+
+.tiles li:nth-child(-n+3) {
     -ms-grid-row: 1;
-}
-
-.tiles li:nth-child(4) {
-    -ms-grid-column: 1;
-    -ms-grid-row: 2;
-}
-
-.tiles li:nth-child(5) {
-    -ms-grid-column: 2;
-    -ms-grid-row: 2;
-}
-
-.tiles li:nth-child(6) {
-    -ms-grid-column: 3;
-    -ms-grid-row: 2;
 }
 
 @media screen and (max-width: 960px) {
-    .tiles li:nth-child(1) {
+    .tiles li:nth-child(2n+1) {
         -ms-grid-column: 1;
-        -ms-grid-row: 1;
     }
     
-    .tiles li:nth-child(2) {
+    .tiles li:nth-child(2n) {
         -ms-grid-column: 2;
-        -ms-grid-row: 1;
     }
     
-    .tiles li:nth-child(3) {
-        -ms-grid-column: 1;
-        -ms-grid-row: 2;
-    }
-    
-    .tiles li:nth-child(4) {
-        -ms-grid-column: 2;
-        -ms-grid-row: 2;
-    }
-    
-    .tiles li:nth-child(5) {
-        -ms-grid-column: 1;
+    .tiles li:nth-child(-n+6) {
         -ms-grid-row: 3;
     }
-    
-    .tiles li:nth-child(6) {
-        -ms-grid-column: 2;
-        -ms-grid-row: 3;
+
+    .tiles li:nth-child(-n+4) {
+        -ms-grid-row: 2;
+    }
+
+    .tiles li:nth-child(-n+2) {
+        -ms-grid-row: 1;
     }
 }
 
@@ -241,6 +221,144 @@ ul#menu {
     .tiles li:nth-child(6) {
         -ms-grid-column: 1;
         -ms-grid-row: 6;
+    }
+}
+/*#endregion*/
+
+/*#region tiles5x2*/
+.tiles5x2 li:nth-child(5n+1) {
+    -ms-grid-column: 1;
+}
+
+.tiles5x2 li:nth-child(5n+2) {
+    -ms-grid-column: 2;
+}
+
+.tiles5x2 li:nth-child(5n+3) {
+    -ms-grid-column: 3;
+}
+
+.tiles5x2 li:nth-child(5n+4) {
+    -ms-grid-column: 4;
+}
+
+.tiles5x2 li:nth-child(5n) {
+    -ms-grid-column: 5;
+}
+
+.tiles5x2 li:nth-child(-n+10) {
+    -ms-grid-row: 1;
+}
+
+.tiles5x2 li:nth-child(-n+5) {
+    -ms-grid-row: 2;
+}
+
+@media screen and (max-width: 1420px) {
+    .tiles5x2 li:nth-child(3n+1) {
+        -ms-grid-column: 1;
+    }
+    
+    .tiles5x2 li:nth-child(3n+2) {
+        -ms-grid-column: 2;
+    }
+    
+    .tiles5x2 li:nth-child(3n) {
+        -ms-grid-column: 3;
+    }
+
+    .tiles5x2 li:nth-child(-n+9) {
+        -ms-grid-row: 3;
+    }
+    
+    .tiles5x2 li:nth-child(-n+6) {
+        -ms-grid-row: 2;
+    }
+
+    .tiles5x2 li:nth-child(-n+3) {
+        -ms-grid-row: 1;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .tiles5x2 li:nth-child(2n+1) {
+        -ms-grid-column: 1;
+    }
+    
+    .tiles5x2 li:nth-child(2n) {
+        -ms-grid-column: 2;
+    }
+
+    .tiles5x2 li:nth-child(-n+10) {
+        -ms-grid-row: 5;
+    }
+
+    .tiles5x2 li:nth-child(-n+8) {
+        -ms-grid-row: 4;
+    }
+
+    .tiles5x2 li:nth-child(-n+6) {
+        -ms-grid-row: 3;
+    }
+    
+    .tiles5x2 li:nth-child(-n+4) {
+        -ms-grid-row: 2;
+    }
+
+    .tiles5x2 li:nth-child(-n+2) {
+        -ms-grid-row: 1;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .tiles5x2 li:nth-child(1) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1;
+    }
+    
+    .tiles5x2 li:nth-child(2) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 2;
+    }
+    
+    .tiles5x2 li:nth-child(3) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 3;
+    }
+    
+    .tiles5x2 li:nth-child(4) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 4;
+    }
+    
+    .tiles5x2 li:nth-child(5) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 5;
+    }
+    
+    .tiles5x2 li:nth-child(6) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 6;
+    }
+
+    .tiles5x2 li:nth-child(7) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 7;
+    }
+
+    .tiles5x2 li:nth-child(8) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 8;
+    }
+
+    .tiles5x2 li:nth-child(9) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 9;
+    }
+
+    .tiles5x2 li:nth-child(10) {
+        -ms-grid-column: 1;
+        -ms-grid-row: 10;
     }
 }
 /*#endregion*/
